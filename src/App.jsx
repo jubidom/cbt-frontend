@@ -7,7 +7,7 @@ import {
 import MainLayout from "./layout/MainLayout";
 import ErrorPage from "./error/ErrorPage";
 import AuthLayout from "./layout/AuthLayout";
-import LoginForm, { action as loginAction } from "./components/LoginForm";
+import Login, { action as loginAction } from "./pages/Login";
 import SignupForm from "./components/SignupForm";
 
 function App() {
@@ -55,7 +55,7 @@ function App() {
         },
         {
           path: "login",
-          element: <LoginForm />,
+          element: <Login />,
           action: loginAction,
         },
         {
