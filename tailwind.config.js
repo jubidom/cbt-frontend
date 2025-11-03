@@ -2,7 +2,14 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        secondary: "#7a0e74",
+      },
+      fontFamily: {
+        titlefont: ["Museo", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 };
