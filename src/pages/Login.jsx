@@ -1,35 +1,35 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { login } from "../features/authSlice";
+import { login } from "../auth/authSlice.js";
 import formImage from "../assets/formImage.jpg";
 
 function Login() {
   const [activeTab, setActiveTab] = useState("student");
   //prettier-ignore
-  const [studentLogins, setStudentLogins] = useState({ email: "", password: "" });
-  const [tutorLogins, setTutorLogins] = useState({ email: "", password: "" });
+  const [studentLogin, setStudentLogin] = useState({ email: "", password: "" });
+  const [adminLogin, setAdminLogin] = useState({ email: "", password: "" });
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleChange = function (e, type) {
     const { name, value } = e.target;
     if (type === "student") {
-      setStudentLogins({ ...studentLogins, [name]: value });
-    } else setTutorLogins({ ...tutorLogins, [name]: value });
+      setStudentLogin({ ...studentLogin, [name]: value });
+    } else setAdminLogin({ ...adminLogin, [name]: value });
   };
 
   const handleSubmit = async function (e) {
     e.preventDefault();
-    const userData = activeTab === "student" ? studentLogins : tutorLogins;
+    const userData = activeTab === "student" ? studentLogin : adminLogin;
 
     const loginSuccess = await dispatch(login(userData));
     if (login.fulfilled.match(loginSuccess)) {
       navigate("/dashboard");
     }
 
-    setStudentLogins({ email: "", password: "" });
-    setTutorLogins({ email: "", password: "" });
+    setStudentLogin({ email: "", password: "" });
+    setAdminLogin({ email: "", password: "" });
   };
 
   return (
@@ -55,13 +55,13 @@ function Login() {
             <button
               type="button"
               className={`rounded-full px-8 py-1.5 min-w-32 ${
-                activeTab === "tutor"
+                activeTab === "admin"
                   ? "bg-secondary text-white"
                   : "border border-secondary text-secondary"
               }`}
-              onClick={() => setActiveTab("tutor")}
+              onClick={() => setActiveTab("admin")}
             >
-              Tutor
+              Admin
             </button>
           </div>
           <p className="text-slate-400 text-sm">Enter your Details below</p>
@@ -78,12 +78,10 @@ function Login() {
               name="email"
               id={`${activeTab}-email`}
               value={
-                activeTab === "student"
-                  ? studentLogins.email
-                  : tutorLogins.email
+                activeTab === "student" ? studentLogin.email : adminLogin.email
               }
               placeholder={
-                activeTab === "student" ? "Student's Email" : "Tutor's Email"
+                activeTab === "student" ? "Student's Email" : "Admin's Email"
               }
               className="w-full px-4 py-2 min-h-11 rounded-xl overflow-hidden border border-secondary focus:outline-none focus:ring-1 focus:ring-secondary"
               required
@@ -97,13 +95,13 @@ function Login() {
               id={`${activeTab}-password`}
               value={
                 activeTab === "student"
-                  ? studentLogins.password
-                  : tutorLogins.password
+                  ? studentLogin.password
+                  : adminLogin.password
               }
               placeholder={
                 activeTab === "student"
                   ? "Student's Password"
-                  : "Tutor's Password"
+                  : "Admin's Password"
               }
               className="w-full px-4 py-2 min-h-11 rounded-xl overflow-hidden border border-secondary focus:outline-none focus:ring-1 focus:ring-secondary"
               required
@@ -114,7 +112,7 @@ function Login() {
             type="submit"
             className="inline-block px-4 py-2 min-h-11 text-center font-semibold bg-secondary  text-white rounded-xl mt-6"
           >
-            {activeTab === "student" ? "Login as Student" : "Login as Tutor"}
+            {activeTab === "student" ? "Log in as Student" : "Log in as Admin"}
           </button>
           <p className="text-sm">
             Don't Have an Account?{" "}
