@@ -1,7 +1,5 @@
-import { FiMenu } from "react-icons/fi";
 import { LuLayoutDashboard } from "react-icons/lu";
 
-import { IoClose } from "react-icons/io5";
 import { FaBook } from "react-icons/fa";
 import { FaRegUser } from "react-icons/fa6";
 import { FaHistory } from "react-icons/fa";
@@ -15,10 +13,9 @@ const icons = [<LuLayoutDashboard />, <FaRegUser />, <FaBook />, <FaHistory />];
 
 function SideBar({ onhandleActiveTab, activeTab }) {
   return (
-    <aside className="bg-secondary min-w-60 flex flex-col px-4 py-2 rounded-br-2xl rounded-tr-2xl">
-      <div className="py-6 flex items-center">
-        <FiMenu className="text-2xl" />
-        <IoClose className="text-2xl" />
+    <aside className="bg-secondary min-w-60 lg:flex flex-col px-4 py-2 rounded-br-2xl rounded-tr-2xl hidden">
+      <div className="py-6">
+        <h1>Logo</h1>
       </div>
       <div className="flex-grow flex flex-col justify-between px-1 py-2">
         <div className="flex flex-col gap-4">
