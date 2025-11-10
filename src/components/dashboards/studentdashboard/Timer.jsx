@@ -14,7 +14,7 @@ function Timer({ duration = 90, className }) {
         setCountDown((prev) => {
           if (prev <= 1) {
             clearInterval(intervalID);
-            return;
+            return 0;
           }
           return prev - 1;
         }),
