@@ -41,7 +41,6 @@ export const currentUser = createAsyncThunk(
       const res = await axios.get("/api/v1/users/token", {
         headers: { Authorization: `Bearer ${token}` },
       });
-
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || "failed to fetch user");
@@ -59,40 +58,44 @@ const authSlice = createSlice({
   name: "authSlice",
   initialState: {
     loading: false,
-    user: null,
     error: null,
+    user: null,
+    token: localStorage.getItem("token") || null,
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
+      //SIGNUP
       .addCase(signup.pending, (state) => {
         state.loading = true;
-        state.error = null;
       })
       .addCase(signup.fulfilled, (state, action) => {
         state.loading = false;
+        state.error = null;
         state.user = action.payload;
       })
       .addCase(signup.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = action.error.message || action.payload;
       })
+      //LOGIN
       .addCase(login.pending, (state) => {
         state.loading = true;
-        state.error = null;
       })
       .addCase(login.fulfilled, (state, action) => {
         state.loading = false;
         state.user = action.payload;
+        state.token = action.payload.token;
         state.error = null;
+        localStorage.setItem("token", state.token);
       })
       .addCase(login.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = action.error.message || action.payload;
       })
+      //CURRENTLY LOGGED IN USER
       .addCase(currentUser.pending, (state) => {
         state.loading = true;
-        state.error = null;
       })
       .addCase(currentUser.fulfilled, (state, action) => {
         state.loading = false;
@@ -101,10 +104,12 @@ const authSlice = createSlice({
       })
       .addCase(currentUser.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = action.error.message || action.payload;
       })
       .addCase(logout.fulfilled, (state) => {
         state.user = null;
+        state.token = null;
+        localStorage.removeItem("token");
       });
   },
 });

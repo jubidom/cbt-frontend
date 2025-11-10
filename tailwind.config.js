@@ -5,6 +5,8 @@ export default {
     extend: {
       colors: {
         secondary: "#7a0e74",
+        primary: "#f4f4f4",
+        cards: "fff",
       },
       fontFamily: {
         titlefont: ["Museo", "sans-serif"],

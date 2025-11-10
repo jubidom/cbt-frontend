@@ -35,7 +35,7 @@ function Login() {
   return (
     <section className="min-h-dvh max-h-fit flex  justify-center bg-white">
       <div className="hidden md:block w-2/4">
-        <img src={formImage} alt="" className="block h-full object-fill" />
+        <img src={formImage} alt="" className="block h-full object-contain" />
       </div>
       <div className=" w-full md:w-2/4 py-[90px] px-6 md:px-16">
         <div className="flex flex-col mb-8 gap-4">
