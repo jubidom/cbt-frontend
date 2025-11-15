@@ -21,23 +21,25 @@ function Login() {
 
   const handleSubmit = async function (e) {
     e.preventDefault();
-    const userData = activeTab === "student" ? studentLogin : adminLogin;
+    // const userData = activeTab === "student" ? studentLogin : adminLogin;
 
-    const loginSuccess = await dispatch(login(userData));
-    if (login.fulfilled.match(loginSuccess)) {
-      navigate("/dashboard");
-    }
+    // const loginSuccess = await dispatch(login(userData));
+    // if (login.fulfilled.match(loginSuccess)) {
+    //   navigate("/dashboard");
+    // }
+
+    navigate("/dashboard");
 
     setStudentLogin({ email: "", password: "" });
     setAdminLogin({ email: "", password: "" });
   };
 
   return (
-    <section className="min-h-dvh max-h-fit flex  justify-center bg-white">
-      <div className="hidden md:block w-2/4">
+    <section className="min-h-dvh max-h-fit flex bg-white">
+      <div className="hidden lg:block w-2/4">
         <img src={formImage} alt="" className="block h-full object-contain" />
       </div>
-      <div className=" w-full md:w-2/4 py-[90px] px-6 md:px-16">
+      <div className=" w-full lg:w-2/4 py-[90px] px-6 md:px-16 flex flex-col justify-center">
         <div className="flex flex-col mb-8 gap-4">
           <h1 className="font-bold text-xl">Login</h1>
           <div className="flex items-center gap-4 text-sm">
