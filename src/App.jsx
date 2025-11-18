@@ -12,7 +12,7 @@ import SignupForm from "./components/SignupForm";
 import StudentDashboard from "./components/dashboards/studentdashboard/StudentDashboard";
 import AdminDashboard from "./components/dashboards/admindashboard/AdminDashboard";
 import Dashboard from "./components/dashboards/studentdashboard/Dashboard";
-import Profile from "./components/dashboards/studentdashboard/Profile";
+import StudentProfile from "./components/dashboards/studentdashboard/StudentProfile";
 import ExamComponent from "./components/dashboards/studentdashboard/ExamComponent";
 import ExamsHistory from "./components/dashboards/studentdashboard/ExamsHistory";
 import ProtectedRoute from "./routes/ProtectedRoute";
@@ -31,7 +31,7 @@ function App() {
               element: <Navigate to="dashboard" replace />,
             },
             { path: "dashboard", element: <Dashboard /> },
-            { path: "profile", element: <Profile /> },
+            { path: "student's profile", element: <StudentProfile /> },
             { path: "exams", element: <ExamComponent /> },
             { path: "history", element: <ExamsHistory /> },
           ],
