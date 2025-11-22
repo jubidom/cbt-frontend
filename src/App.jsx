@@ -80,7 +80,7 @@ function App() {
       children: [
         {
           index: true,
-          element: <Navigate to="/" replace />,
+          element: <Navigate to="login" replace />,
         },
         {
           path: "login",
