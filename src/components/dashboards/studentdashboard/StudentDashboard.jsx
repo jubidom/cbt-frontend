@@ -13,12 +13,23 @@ function StudentDashboard() {
   }
 
   return (
+<<<<<<< HEAD
     <section className="min-h-dvh flex relative overflow-hidden">
       <SideBar onhandleActiveTab={handleActiveTab} activeTab={activeTab} />
       {isOpen && <MobileNav setIsOpen={setIsOpen} />}
       <MainDisplay activeTab={activeTab} setIsOpen={setIsOpen}>
         <Outlet />
       </MainDisplay>
+=======
+    <section className="flex relative overflow-hidden lg:h-screen bg-slate-50">
+      <SideBar onhandleActiveTab={handleActiveTab} activeTab={activeTab} />
+      {isOpen && <MobileNav setIsOpen={setIsOpen} />}
+      <div className="lg:h-screen flex-grow overflow-y-auto">
+        <MainDisplay activeTab={activeTab} setIsOpen={setIsOpen}>
+          <Outlet />
+        </MainDisplay>
+      </div>
+>>>>>>> Vincent
     </section>
   );
 }
