@@ -12,12 +12,6 @@ import SignupForm from "./components/SignupForm";
 import StudentDashboard from "./components/dashboards/studentdashboard/StudentDashboard";
 import AdminDashboard from "./components/dashboards/admindashboard/AdminDashboard";
 import Dashboard from "./components/dashboards/studentdashboard/Dashboard";
-<<<<<<< HEAD
-import Profile from "./components/dashboards/studentdashboard/Profile";
-import ExamComponent from "./components/dashboards/studentdashboard/ExamComponent";
-import ExamsHistory from "./components/dashboards/studentdashboard/ExamsHistory";
-import ProtectedRoute from "./routes/ProtectedRoute";
-=======
 // import Profile from "./components/dashboards/studentdashboard/StudentProfile";
 import StudentProfile from "./components/dashboards/studentdashboard/StudentProfile";
 import ExamComponent from "./components/dashboards/studentdashboard/ExamComponent";
@@ -27,7 +21,6 @@ import Subjects from "./components/dashboards/studentdashboard/Subjects";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import SubjectPerformance from "./components/dashboards/studentdashboard/SubjectPerformance";
 import ExamScoreDetail from "./components/dashboards/studentdashboard/ExamScoreDetail";
->>>>>>> Vincent
 
 function App() {
   const router = createBrowserRouter([
@@ -43,11 +36,6 @@ function App() {
               element: <Navigate to="dashboard" replace />,
             },
             { path: "dashboard", element: <Dashboard /> },
-<<<<<<< HEAD
-            { path: "profile", element: <Profile /> },
-            { path: "exams", element: <ExamComponent /> },
-            { path: "history", element: <ExamsHistory /> },
-=======
             { path: "studentprofile", element: <StudentProfile /> },
             {
               path: "exams",
@@ -68,7 +56,6 @@ function App() {
                 { path: ":id", element: <ExamScoreDetail /> },
               ],
             },
->>>>>>> Vincent
           ],
         },
         {
@@ -93,7 +80,7 @@ function App() {
       children: [
         {
           index: true,
-          element: <Navigate to="login" replace />,
+          element: <Navigate to="/" replace />,
         },
         {
           path: "login",
@@ -111,42 +98,3 @@ function App() {
 }
 
 export default App;
-<<<<<<< HEAD
-
-/* 
-  {
-          element: <ProtectedRoute />,
-          path: "/dashboard",
-          children: [
-            {
-              path: "studentdashboard",
-              element: <StudentDashboard />,
-              children: [
-                {
-                  index: true,
-                  element: <Navigate to="profile" replace />,
-                },
-                { path: "profile", element: <Profile /> },
-                { path: "exams", element: <Exams /> },
-                { path: "examshistory", element: <ExamsHistory /> },
-              ],
-            },
-            {
-              path: "admindashboard",
-              element: <AdminDashboard />,
-              children: [
-                {
-                  index: true,
-                  element: <Navigate to="profile" replace />,
-                },
-                { path: "profile", element: <Profile /> },
-                { path: "registerstudent", element: <RegisterStudent /> },
-                { path: "uploadexams", element: <UploadExams /> },
-                { path: "uploadanswers", element: <UploadAnswers /> },
-              ],
-            },
-          ],
-        },
-*/
-=======
->>>>>>> Vincent
