@@ -100,23 +100,6 @@ const StudentProfile = () => {
   return (
     <div className="p-6 max-w-4xl mx-auto space-y-8">
 
-      {/* TOP BAR */}
-      {/* <div className="flex justify-between items-center p-4 bg-white rounded-2xl shadow-md"> */}
-        {/* <div className="flex items-center gap-4 text-2xl font-semibold">
-          <span>Profile</span>
-          <span className="w-3 h-3 bg-green-500 rounded-full"></span>
-          <span className="text-sm text-gray-600">Online</span>
-        </div>
-        <div className="flex items-center gap-4 text-gray-700">
-          <button
-            onClick={() => setHelpOpen(true)}
-            className="flex items-center gap-1 text-blue-600 font-semibold"
-          >
-            <span className="text-xl">?</span> Help
-          </button>
-        </div> */}
-      {/* </div> */}
-
       {/* AVATAR SECTION */}
 <div className="flex items-center gap-10 p-6 bg-white shadow-lg rounded-2xl">
 
