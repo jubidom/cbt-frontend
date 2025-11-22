@@ -1,55 +1,59 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchStudentProfile,
   updateStudentProfile,
-  resetStudentState,
 } from "./studentSlice";
 
 const StudentProfile = () => {
   const dispatch = useDispatch();
-  const { profile, loading, error, success } = useSelector(
-    (state) => state.student
-  );
+  const { profile } = useSelector((state) => state.student);
 
-  const [editing, setEditing] = useState(false);
+  const btnStyle = "border-gray-300"; // Theme border style
+
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    middleName: "",
+    lastName: "",
     email: "",
-    regNumber: "",
-    department: "",
-    gradeLevel: "",
+    phone: "",
+    gender: "",
+    nin: "",
+    dob: "",
+    nationality: "",
+    address: "",
   });
 
   const [avatar, setAvatar] = useState(null);
   const [preview, setPreview] = useState("");
 
-  // Fetch profile on load
+  const [showCamera, setShowCamera] = useState(false);
+  const videoRef = useRef(null);
+  const canvasRef = useRef(null);
+
+  const [helpOpen, setHelpOpen] = useState(false);
+
   useEffect(() => {
     dispatch(fetchStudentProfile());
-  }, [dispatch]);
+  }, []);
 
-  // Fill form when profile loads
   useEffect(() => {
     if (profile) {
       setFormData({
-        name: profile.name,
-        email: profile.email,
-        regNumber: profile.regNumber,
-        department: profile.department,
-        gradeLevel: profile.gradeLevel,
+        firstName: profile.firstName || "",
+        middleName: profile.middleName || "",
+        lastName: profile.lastName || "",
+        email: profile.email || "",
+        phone: profile.phone || "",
+        gender: profile.gender || "",
+        nin: profile.nin || "",
+        dob: profile.dob || "",
+        nationality: profile.nationality || "",
+        address: profile.address || "",
       });
       setPreview(profile.avatar);
     }
   }, [profile]);
-
-  // Reset UI after successful update
-  useEffect(() => {
-    if (success) {
-      setEditing(false);
-      dispatch(resetStudentState());
-    }
-  }, [success, dispatch]);
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -62,113 +66,253 @@ const StudentProfile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const form = new FormData();
-    Object.entries(formData).forEach(([key, value]) =>
-      form.append(key, value)
-    );
+    Object.entries(formData).forEach(([key, value]) => form.append(key, value));
     if (avatar) form.append("avatar", avatar);
-
     dispatch(updateStudentProfile(form));
   };
 
-  if (loading && !profile)
-    return <p className="text-center py-10">Loading...</p>;
+  const startCamera = async () => {
+    setShowCamera(true);
+    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+    videoRef.current.srcObject = stream;
+    videoRef.current.play();
+  };
 
-  if (error)
-    return (
-      <p className="text-red-600 text-center py-4">
-        Error: {error}
-      </p>
-    );
+  const capturePhoto = () => {
+    const canvas = canvasRef.current;
+    const video = videoRef.current;
+    canvas.width = 300;
+    canvas.height = 300;
+    const ctx = canvas.getContext("2d");
+    ctx.drawImage(video, 0, 0, 300, 300);
+    setPreview(canvas.toDataURL("image/png"));
+    setAvatar(null);
+    video.srcObject.getTracks().forEach((t) => t.stop());
+    setShowCamera(false);
+  };
+
+  const deleteAvatar = () => {
+    setAvatar(null);
+    setPreview("");
+  };
 
   return (
-    <div className="p-6 max-w-3xl mx-auto ">
-      <div className="bg-white rounded-xl p-6 shadow-[5px_5px_15px_rgba(0,0,0,0.3),-5px_-5px_15px_rgba(255,255,255,0.7)]">
-        <div className="pl-10 flex items-center gap-20">
-          <img
-            src={preview || "https://i.pravatar.cc/150"}
-            alt="avatar"
-            className="w-28 h-28 rounded-full object-cover border-2 border-indigo-600"
-          />
+    <div className="p-6 max-w-4xl mx-auto space-y-8">
 
-          <div>
-            <h1 className="text-2xl font-bold">{profile?.name}</h1>
-            <p className="text-gray-600">{profile?.email}</p>
-            <p className="mt-1 text-gray-700">
-              <span className="font-semibold">Reg No:</span>{" "}
-              {profile?.regNumber}
-            </p>
-            <p className="text-gray-700">
-              <span className="font-semibold">Department:</span>{" "}
-              {profile?.department}
-            </p>
-            <p className="text-gray-700">
-              <span className="font-semibold">Grade Level:</span>{" "}
-              {profile?.gradeLevel}
-            </p>
+      {/* TOP BAR */}
+      {/* <div className="flex justify-between items-center p-4 bg-white rounded-2xl shadow-md"> */}
+        {/* <div className="flex items-center gap-4 text-2xl font-semibold">
+          <span>Profile</span>
+          <span className="w-3 h-3 bg-green-500 rounded-full"></span>
+          <span className="text-sm text-gray-600">Online</span>
+        </div>
+        <div className="flex items-center gap-4 text-gray-700">
+          <button
+            onClick={() => setHelpOpen(true)}
+            className="flex items-center gap-1 text-blue-600 font-semibold"
+          >
+            <span className="text-xl">?</span> Help
+          </button>
+        </div> */}
+      {/* </div> */}
 
+      {/* AVATAR SECTION */}
+<div className="flex items-center gap-10 p-6 bg-white shadow-lg rounded-2xl">
+
+  {/* Avatar + Webcam */}
+  <div className="relative w-32 h-32">
+    <img
+      src={preview || "https://i.pravatar.cc/150"}
+      alt="avatar"
+      className="w-32 h-32 rounded-full object-cover border shadow-md"
+    />
+
+    {/* Webcam Icon — bottom right overlay */}
+    <button
+      onClick={startCamera}
+      className="absolute bottom-0 right-0 w-10 h-10 bg-white rounded-full shadow-md 
+                 flex items-center justify-center cursor-pointer hover:bg-gray-100"
+    >
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/727/727245.png"
+        alt="webcam"
+        className="w-6 h-6"
+      />
+    </button>
+  </div>
+
+  {/* Update + Delete buttons moved DOWN a bit */}
+  <div className="flex flex-col gap-3">
+    <div className="flex items-center gap-4 mt-6">
+
+      {/* Update New */}
+      <label className="px-6 py-2 bg-purple-600 text-white rounded-xl shadow cursor-pointer hover:bg-purple-700">
+        Update New
+        <input
+          type="file"
+          accept="image/*"
+          className="hidden"
+          onChange={handleFileChange}
+        />
+      </label>
+
+      {/* Delete Avatar */}
+      <button
+        onClick={deleteAvatar}
+        className="px-6 py-2 bg-gray-200 text-black rounded-xl shadow hover:bg-gray-300"
+      >
+        Delete Avatar
+      </button>
+    </div>
+  </div>
+</div>
+
+
+      {/* CAMERA POPUP */}
+      {showCamera && (
+        <div className="mb-10 bg-white shadow-lg p-6 rounded-2xl">
+          <h2 className="text-lg font-semibold mb-3">Capture Photo</h2>
+          <video ref={videoRef} className="w-64 h-64 bg-black rounded-lg"></video>
+          <canvas ref={canvasRef} className="hidden"></canvas>
+          <div className="flex gap-3 mt-4">
             <button
-              onClick={() => setEditing(true)}
-              className="mt-4 bg-indigo-600 text-white px-4 py-2 rounded-lg"
+              onClick={capturePhoto}
+              className="bg-green-600 text-white px-4 py-2 rounded-lg"
             >
-              Edit Profile
+              Capture
+            </button>
+            <button
+              onClick={() => setShowCamera(false)}
+              className="bg-gray-500 text-white px-4 py-2 rounded-lg"
+            >
+              Cancel
             </button>
           </div>
         </div>
-      </div>
+      )}
 
-      {/* Edit Modal */}
-      {editing && (
-        <div className="fixed inset-0 bg-black/40 flex justify-center items-center">
-          <div className="bg-white p-6 rounded-xl w-full max-w-lg">
-            <h2 className="text-xl font-semibold mb-4">
-              Update Profile
-            </h2>
+      {/* FORM */}
+      <form onSubmit={handleSubmit} className="bg-white shadow-lg p-6 rounded-2xl space-y-6">
+        {/* Name Row */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {["firstName", "middleName", "lastName"].map((field) => (
+            <input
+              key={field}
+              name={field}
+              placeholder={field.replace(/([A-Z])/g, " $1")}
+              value={formData[field]}
+              onChange={handleChange}
+              className={`border ${btnStyle} p-3 rounded-xl bg-primary text-secondary shadow-sm`}
+            />
+          ))}
+        </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="block mb-1 font-medium">
-                  Profile Picture
-                </label>
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleFileChange}
-                />
-              </div>
+        {/* Email + Phone */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {["email", "phone"].map((field) => (
+            <input
+              key={field}
+              name={field}
+              placeholder={field}
+              value={formData[field]}
+              onChange={handleChange}
+              className={`border ${btnStyle} p-3 rounded-xl bg-primary text-secondary shadow-sm`}
+            />
+          ))}
+        </div>
 
-              {Object.keys(formData).map((field) => (
-                <div key={field}>
-                  <label className="block mb-1 capitalize">
-                    {field}
-                  </label>
-                  <input
-                    type="text"
-                    name={field}
-                    value={formData[field]}
-                    onChange={handleChange}
-                    className="w-full border px-3 py-2 rounded-lg"
-                  />
-                </div>
-              ))}
+        {/* Gender + NIN (horizontal) */}
+<div className="flex items-center gap-4">
 
-              <div className="flex justify-end gap-3">
-                <button
-                  type="button"
-                  className="px-4 py-2 bg-gray-200 rounded-lg"
-                  onClick={() => setEditing(false)}
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-indigo-600 text-white rounded-lg"
-                >
-                  Save
-                </button>
-              </div>
-            </form>
+  {/* Male */}
+  <label className="flex items-center gap-2 border p-3 rounded-xl bg-primary text-secondary shadow-sm w-40">
+    <input
+      type="radio"
+      name="gender"
+      value="male"
+      checked={formData.gender === "male"}
+      onChange={handleChange}
+    />
+    Male
+  </label>
+
+  {/* Female */}
+  <label className="flex items-center gap-2 border p-3 rounded-xl bg-primary text-secondary shadow-sm w-40">
+    <input
+      type="radio"
+      name="gender"
+      value="female"
+      checked={formData.gender === "female"}
+      onChange={handleChange}
+    />
+    Female
+  </label>
+
+  {/* NIN */}
+  <input
+    name="nin"
+    placeholder="NIN"
+    value={formData.nin}
+    onChange={handleChange}
+    className={`border ${btnStyle} p-3 rounded-xl bg-primary text-secondary shadow-sm flex-1`}
+  />
+</div>
+
+
+        {/* DOB + Nationality */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input
+            type="date"
+            name="dob"
+            value={formData.dob}
+            onChange={handleChange}
+            className={`border ${btnStyle} p-3 rounded-xl bg-primary text-secondary shadow-sm`}
+          />
+          <select
+            name="nationality"
+            value={formData.nationality}
+            onChange={handleChange}
+            className={`border ${btnStyle} p-3 rounded-xl bg-primary text-secondary shadow-sm`}
+          >
+            <option value="">Select Country</option>
+            {/* Full list of countries can be populated here */}
+            <option>Nigeria</option>
+            <option>Ghana</option>
+            <option>Kenya</option>
+            <option>United States</option>
+            <option>United Kingdom</option>
+          </select>
+        </div>
+
+        {/* Address */}
+        <textarea
+          name="address"
+          placeholder="Residential Address"
+          value={formData.address}
+          onChange={handleChange}
+          rows="3"
+          className={`border ${btnStyle} p-3 rounded-xl w-full bg-primary text-secondary shadow-sm`}
+        ></textarea>
+        <button className="bg-purple-600 text-white px-6 py-3 rounded-lg w-full shadow-md hover:bg-purple-700">
+          Save Changes
+        </button>
+      </form>
+
+      {/* HELP MODAL */}
+      {helpOpen && (
+        <div className="fixed inset-0 bg-black/40 flex items-center justify-center">
+          <div className="bg-white p-6 rounded-xl w-80 shadow-lg">
+            <h2 className="text-xl font-semibold mb-3">Help</h2>
+            <p className="text-gray-700">
+              Update your profile, upload images, or take a photo using your webcam.
+            </p>
+            <button
+              onClick={() => setHelpOpen(false)}
+              className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg w-full"
+            >
+              Close
+            </button>
           </div>
         </div>
       )}
