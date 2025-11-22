@@ -8,7 +8,11 @@ import Button from "../../Button";
 
 const btnStyle = `inline-block px-4 py-2 rounded-full text-black w-full active:text-secondary focus:text-secondary active:bg-primary focus:bg-primary text-primary border border-primary font-semibold flex items-center gap-2`;
 
+<<<<<<< HEAD
 const tabs = ["dashboard", "profile", "exams", "history"];
+=======
+const tabs = ["dashboard", "studentprofile", "exams", "history"];
+>>>>>>> Vincent
 const icons = [<LuLayoutDashboard />, <FaRegUser />, <FaBook />, <FaHistory />];
 
 function SideBar({ onhandleActiveTab, activeTab }) {

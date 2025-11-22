@@ -14,7 +14,11 @@ const icons = [<LuLayoutDashboard />, <FaRegUser />, <FaBook />, <FaHistory />];
 
 function MobileNav({ onhandleActiveTab, activeTab, setIsOpen }) {
   return (
+<<<<<<< HEAD
     <aside className=" absolute top-0 bottom-0 left-0 h-full w-full bg-[rgba(0,0,0,0.2)] z-10 ">
+=======
+    <aside className=" fixed top-0 bottom-0 left-0 h-screen w-full bg-[rgba(0,0,0,0.2)] z-10 ">
+>>>>>>> Vincent
       <section className="bg-secondary h-full w-60 flex flex-col px-4 py-2 rounded-br-3xl rounded-tr-3xl">
         <div className="pt-3 pb-6 flex items-center justify-between">
           <h1 className="font-semibold text-lg text-white">LOGO</h1>

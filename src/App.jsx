@@ -12,10 +12,22 @@ import SignupForm from "./components/SignupForm";
 import StudentDashboard from "./components/dashboards/studentdashboard/StudentDashboard";
 import AdminDashboard from "./components/dashboards/admindashboard/AdminDashboard";
 import Dashboard from "./components/dashboards/studentdashboard/Dashboard";
+<<<<<<< HEAD
 import Profile from "./components/dashboards/studentdashboard/Profile";
 import ExamComponent from "./components/dashboards/studentdashboard/ExamComponent";
 import ExamsHistory from "./components/dashboards/studentdashboard/ExamsHistory";
 import ProtectedRoute from "./routes/ProtectedRoute";
+=======
+// import Profile from "./components/dashboards/studentdashboard/StudentProfile";
+import StudentProfile from "./components/dashboards/studentdashboard/StudentProfile";
+import ExamComponent from "./components/dashboards/studentdashboard/ExamComponent";
+import ExamsHistory from "./components/dashboards/studentdashboard/ExamsHistory";
+import ExamsGrid from "./components/dashboards/studentdashboard/ExamsGrid";
+import Subjects from "./components/dashboards/studentdashboard/Subjects";
+import ProtectedRoute from "./routes/ProtectedRoute";
+import SubjectPerformance from "./components/dashboards/studentdashboard/SubjectPerformance";
+import ExamScoreDetail from "./components/dashboards/studentdashboard/ExamScoreDetail";
+>>>>>>> Vincent
 
 function App() {
   const router = createBrowserRouter([
@@ -31,9 +43,32 @@ function App() {
               element: <Navigate to="dashboard" replace />,
             },
             { path: "dashboard", element: <Dashboard /> },
+<<<<<<< HEAD
             { path: "profile", element: <Profile /> },
             { path: "exams", element: <ExamComponent /> },
             { path: "history", element: <ExamsHistory /> },
+=======
+            { path: "studentprofile", element: <StudentProfile /> },
+            {
+              path: "exams",
+              element: <ExamsGrid />,
+              children: [
+                { index: true, element: <Subjects /> },
+                {
+                  path: ":id",
+                  element: <ExamComponent />,
+                },
+              ],
+            },
+            {
+              path: "history",
+              element: <ExamsHistory />,
+              children: [
+                { index: true, element: <SubjectPerformance /> },
+                { path: ":id", element: <ExamScoreDetail /> },
+              ],
+            },
+>>>>>>> Vincent
           ],
         },
         {
@@ -76,6 +111,7 @@ function App() {
 }
 
 export default App;
+<<<<<<< HEAD
 
 /* 
   {
@@ -112,3 +148,5 @@ export default App;
           ],
         },
 */
+=======
+>>>>>>> Vincent
