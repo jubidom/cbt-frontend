@@ -13,9 +13,5 @@ export default {
       },
     },
   },
-<<<<<<< HEAD
-  plugins: [],
-=======
-  plugins: [require("tailwind-scrollbar-hide")],
->>>>>>> Vincent
+  plugins: [import("tailwind-scrollbar-hide")],
 };

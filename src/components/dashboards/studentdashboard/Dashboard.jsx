@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-function Dashboard() {
-  return (
-    <div>
-      <h1>Hello, Welcome Vin !</h1>
-    </div>
-=======
 import { Calender } from "../../Calender";
 import Welcome from "./Welcome";
 import History from "./History";
@@ -24,7 +17,6 @@ function Dashboard() {
         <BarChart className="flex-grow rounded-lg py-3 px-2 shadow-md" />
       </section>
     </main>
->>>>>>> Vincent
   );
 }
 

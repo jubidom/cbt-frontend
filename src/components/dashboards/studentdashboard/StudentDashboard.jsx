@@ -13,14 +13,6 @@ function StudentDashboard() {
   }
 
   return (
-<<<<<<< HEAD
-    <section className="min-h-dvh flex relative overflow-hidden">
-      <SideBar onhandleActiveTab={handleActiveTab} activeTab={activeTab} />
-      {isOpen && <MobileNav setIsOpen={setIsOpen} />}
-      <MainDisplay activeTab={activeTab} setIsOpen={setIsOpen}>
-        <Outlet />
-      </MainDisplay>
-=======
     <section className="flex relative overflow-hidden lg:h-screen bg-slate-50">
       <SideBar onhandleActiveTab={handleActiveTab} activeTab={activeTab} />
       {isOpen && <MobileNav setIsOpen={setIsOpen} />}
@@ -29,7 +21,6 @@ function StudentDashboard() {
           <Outlet />
         </MainDisplay>
       </div>
->>>>>>> Vincent
     </section>
   );
 }
