@@ -25,6 +25,24 @@ import ExamScoreDetail from "./components/dashboards/studentdashboard/ExamScoreD
 function App() {
   const router = createBrowserRouter([
     {
+      path: "/",
+      element: <AuthLayout />,
+      children: [
+        {
+          index: true,
+          element: <Navigate to="login" replace />,
+        },
+        {
+          path: "login",
+          element: <Login />,
+        },
+        {
+          path: "signup",
+          element: <SignupForm />,
+        },
+      ],
+    },
+    {
       element: <MainLayout />,
       errorElement: <ErrorPage />,
       children: [
@@ -71,24 +89,6 @@ function App() {
             // { path: "uploadexams", element: <UploadExams /> },
             // { path: "uploadanswers", element: <UploadAnswers /> },
           ],
-        },
-      ],
-    },
-    {
-      path: "/",
-      element: <AuthLayout />,
-      children: [
-        {
-          index: true,
-          element: <Navigate to="login" replace />,
-        },
-        {
-          path: "login",
-          element: <Login />,
-        },
-        {
-          path: "signup",
-          element: <SignupForm />,
         },
       ],
     },
