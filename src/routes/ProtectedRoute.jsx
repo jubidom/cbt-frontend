@@ -14,10 +14,12 @@ function ProtectedRoute() {
     location.pathname === "/dashboard"
   ) {
     if (user.role && user.role === "student") {
-      return <Navigate to="/dashboard/studentdashboard/" replace />;
+      // return <Navigate to="/dashboard/studentdashboard/" replace />;
+      return <Navigate to="studentdashboard" replace />;
     }
     if (user.role && user.role === "admin") {
-      return <Navigate to="/dashboard/admindashboard/" replace />;
+      // return <Navigate to="/dashboard/admindashboard/" replace />;
+      return <Navigate to="admindashboard" replace />;
     }
   }
   return <Outlet />;

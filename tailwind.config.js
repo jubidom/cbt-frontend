@@ -7,6 +7,7 @@ export default {
         secondary: "#7a0e74",
         primary: "#f4f4f4",
         cards: "fff",
+        barchart: "#f7afe5",
       },
       fontFamily: {
         titlefont: ["Museo", "sans-serif"],

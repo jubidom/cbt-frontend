@@ -7,42 +7,58 @@ function History({ className }) {
           <thead className="">
             <tr>
               <th>Subject</th>
+              <th className="text-center">Score</th>
               <th className="text-center">Status</th>
             </tr>
           </thead>
           <tbody className=" ">
             <tr className="bg-[#f4f4f4]">
               <td className="px-2 py-3">Mathematics</td>
+              <td className="px-2 py-3">82%</td>
               <td className="text-green-700 font-bold py-1 text-center">
-                Done
+                Pass
               </td>
             </tr>
             <tr className="bg-[#f4f4f4]">
               <td className="px-2 py-3">English</td>
-              <td className="text-yellow-600 font-bold text-center">Pending</td>
+              <td className="px-2 py-3">59%</td>
+              <td className="text-red-700 font-bold py-1 text-center">Fail</td>
             </tr>
             <tr className="bg-[#f4f4f4]">
               <td className="px-2 py-3">Chemistry</td>
-              <td className="text-green-700 font-bold text-center">Done</td>
+              <td className="px-2 py-3">Nil</td>
+              <td className="text-yellow-600 font-bold py-1 text-center">
+                Pass
+              </td>
             </tr>
             <tr className="bg-[#f4f4f4]">
               <td className="px-2 py-3">Physics</td>
-              <td className="text-yellow-600 font-bold text-center">Pending</td>
+              <td className="px-2 py-3">92%</td>
+              <td className="text-green-700 font-bold py-1 text-center">
+                Pass
+              </td>
             </tr>
             <tr className="bg-[#f4f4f4]">
               <td className="px-2 py-3">Geography</td>
-              <td className="text-green-700 font-bold text-center">Done</td>
+              <td className="px-2 py-3">Nil</td>
+              <td className="text-yellow-600 font-bold py-1 text-center">
+                Pending
+              </td>
             </tr>
             <tr className="bg-[#f4f4f4]">
               <td className="px-2 py-3">Agriculture</td>
-              <td className="text-yellow-600 font-bold text-center">Pending</td>
+              <td className="px-2 py-3">52%</td>
+              <td className="text-red-700 font-bold py-1 text-center">Fail</td>
             </tr>
             <tr className="bg-[#f4f4f4]">
               <td className="px-2 py-3">Economics</td>
-              <td className="text-green-700 font-bold text-center">Done</td>
+              <td className="text-green-700 font-bold text-center">Nil</td>
+              <td className="text-yellow-600 font-bold text-center">Pending</td>
             </tr>
             <tr className="bg-[#f4f4f4]">
               <td className="px-2 py-3">Computer</td>
+
+              <td className="text-yellow-600 font-bold text-center">Nil</td>
               <td className="text-yellow-600 font-bold text-center">Pending</td>
             </tr>
           </tbody>

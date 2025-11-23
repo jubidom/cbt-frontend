@@ -5,7 +5,7 @@ import MainDisplay from "./MainDisplay";
 import MobileNav from "./MobileNav";
 
 function StudentDashboard() {
-  const [activeTab, setActiveTab] = useState("dashboard");
+  const [activeTab, setActiveTab] = useState("studentdashboard");
   const [isOpen, setIsOpen] = useState(false);
 
   function handleActiveTab(tab) {
@@ -17,7 +17,7 @@ function StudentDashboard() {
       <SideBar onhandleActiveTab={handleActiveTab} activeTab={activeTab} />
       {isOpen && <MobileNav setIsOpen={setIsOpen} />}
       <div className="lg:h-screen flex-grow overflow-y-auto">
-        <MainDisplay activeTab={activeTab} setIsOpen={setIsOpen}>
+        <MainDisplay setIsOpen={setIsOpen}>
           <Outlet />
         </MainDisplay>
       </div>
