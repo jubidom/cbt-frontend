@@ -10,6 +10,7 @@ const btnStyle = `inline-block px-4 py-2 rounded-full text-black w-full active:t
 
 const tabs = ["studentdashboard", "studentprofile", "exams", "history"];
 const text = ["Dashboard", "Student Profile", "Exams", "History"];
+const tabs = ["dashboard", "student's profile", "exams", "history"];
 const icons = [<LuLayoutDashboard />, <FaRegUser />, <FaBook />, <FaHistory />];
 
 function SideBar({ onhandleActiveTab, activeTab }) {
