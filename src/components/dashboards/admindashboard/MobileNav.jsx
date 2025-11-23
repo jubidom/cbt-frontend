@@ -1,17 +1,49 @@
-import { IoClose } from "react-icons/io5";
-import { LuLayoutDashboard } from "react-icons/lu";
-import { FaBook } from "react-icons/fa";
-import { FaRegUser } from "react-icons/fa6";
-import { FaHistory } from "react-icons/fa";
-import { TbLogout } from "react-icons/tb";
+import { MdDashboard } from "react-icons/md";
+import { FaUsersCog } from "react-icons/fa";
+import { PiExam } from "react-icons/pi";
+import { TbPencilQuestion } from "react-icons/tb";
+import { GrScorecard } from "react-icons/gr";
+import { LuLibraryBig } from "react-icons/lu";
+import { IoMdSettings } from "react-icons/io";
+import { FiActivity } from "react-icons/fi";
 
+import { TbLogout } from "react-icons/tb";
 import Button from "../../Button";
 
 const btnStyle = `inline-block px-4 py-2 rounded-full text-black w-full active:text-secondary focus:text-secondary active:bg-primary focus:bg-primary text-primary border border-primary font-semibold flex items-center gap-2`;
 
-const tabs = ["dashboard", "profile", "exams", "history"];
-const text = ["Dashboard", "Student Profile", "Exams", "History"];
-const icons = [<LuLayoutDashboard />, <FaRegUser />, <FaBook />, <FaHistory />];
+const tabs = [
+  "admindashboard",
+  "userconfig",
+  "manageexams",
+  "questionbank",
+  "examsscores",
+  "managesubject",
+  "adminsettings",
+  "adminactivities",
+];
+
+const text = [
+  "Admin Dashboard",
+  "User Config",
+  "Manage Exams",
+  "Question Bank",
+  "Exams Scores",
+  "Manage Subject",
+  "Admin Settings",
+  "Admin Activities",
+];
+
+const icons = [
+  <MdDashboard />,
+  <FaUsersCog />,
+  <PiExam />,
+  <TbPencilQuestion />,
+  <GrScorecard />,
+  <LuLibraryBig />,
+  <IoMdSettings />,
+  <FiActivity />,
+];
 
 function MobileNav({ onhandleActiveTab, activeTab, setIsOpen }) {
   return (
