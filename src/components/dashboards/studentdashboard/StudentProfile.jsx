@@ -155,7 +155,7 @@ const StudentProfile = () => {
       {/* CAMERA POPUP */}
       {showCamera && (
         <div className="mb-10 bg-white shadow-lg p-6 rounded-2xl">
-          <h2 className="text-lg font-semibold mb-3">Capture Photo</h2>
+          <h2 className="text-lg font-semibold mb-3">Capture Photo-1</h2>
           <video ref={videoRef} className="w-64 h-64 bg-black rounded-lg"></video>
           <canvas ref={canvasRef} className="hidden"></canvas>
           <div className="flex gap-3 mt-4">
