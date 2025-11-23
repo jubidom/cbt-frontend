@@ -5,7 +5,7 @@ import MainDisplay from "./MainDisplay";
 import MobileNav from "./MobileNav";
 
 function StudentDashboard() {
-  const [activeTab, setActiveTab] = useState("dashboard");
+  const [activeTab, setActiveTab] = useState("studentdashboard");
   const [isOpen, setIsOpen] = useState(false);
 
   function handleActiveTab(tab) {
