@@ -38,8 +38,163 @@ function SubjectPerformance() {
           Clear
         </button>
       </form>
+      <div className="overflow-x-auto block md:table w-full bg-white">
+        <table className="w-full border-collapse">
+          <thead>
+            <tr className="bg-gray-200 text-left">
+              <th className="p-3 border">Subjects</th>
+              <th className="p-3 border text-center">Grades</th>
+              <th className="p-3 border text-center">Status</th>
+              <th className="p-3 border text-center">Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="hover:bg-gray-50">
+              <td className="p-3 border">
+                <h2 className="font-bold text-sm">Biology</h2>
+                <p className="text-xs text-gray-500">2025-02-14</p>
+              </td>
+              <td className="p-3 border text-center">
+                <h2 className="font-semibold">82%</h2>
+              </td>
+              <td className="p-3 border text-center">
+                <h2 className="font-semibold">Pass</h2>
+              </td>
+              <td className="p-3 border text-green-600 font-semibold text-center">
+                <div className="flex justify-center">
+                  <Link
+                    to="biology"
+                    className="text-xs flex items-center gap-1 bg-secondary text-slate-50 px-2 py-1 rounded-lg"
+                  >
+                    <span>Details</span>
+                    <RxCaretRight />
+                  </Link>
+                </div>
+              </td>
+            </tr>
+
+            <tr className="hover:bg-gray-50">
+              <td className="p-3 border">
+                <h2 className="font-bold text-sm">Chemistry</h2>
+                <p className="text-xs text-gray-500">2025-02-12</p>
+              </td>
+              <td className="p-3 border text-center">
+                <h2 className="font-semibold">61%</h2>
+              </td>
+              <td className="p-3 border text-center">
+                <h2 className="font-semibold">Fail</h2>
+              </td>
+              <td className="p-3 border text-green-600 font-semibold">
+                <div className="flex justify-center">
+                  <Link
+                    to="biology"
+                    className="text-xs flex items-center gap-1 bg-secondary text-slate-50 px-2 py-1 rounded-lg"
+                  >
+                    <span>Details</span>
+                    <RxCaretRight />
+                  </Link>
+                </div>
+              </td>
+            </tr>
+
+            <tr className="hover:bg-gray-50">
+              <td className="p-3 border">
+                <h2 className="font-bold text-sm">Mathematics</h2>
+                <p className="text-xs text-gray-500">2025-02-10</p>
+              </td>
+              <td className="p-3 border text-center">
+                <h2 className="font-semibold">74%</h2>
+              </td>
+              <td className="p-3 border text-center">
+                <h2 className="font-semibold">pass</h2>
+              </td>
+              <td className="p-3 border text-green-600 font-semibold">
+                <div className="flex justify-center">
+                  <Link
+                    to="biology"
+                    className="text-xs flex items-center gap-1 bg-secondary text-slate-50 px-2 py-1 rounded-lg"
+                  >
+                    <span>Details</span>
+                    <RxCaretRight />
+                  </Link>
+                </div>
+              </td>
+            </tr>
+
+            <tr className="hover:bg-gray-50">
+              <td className="p-3 border">
+                <h2 className="font-bold text-sm">Geography</h2>
+                <p className="text-xs text-gray-500">2025-02-14</p>
+              </td>
+              <td className="p-3 border text-center">
+                <h2 className="font-semibold">92%</h2>
+              </td>
+              <td className="p-3 border text-center">
+                <h2 className="font-semibold">Fail</h2>
+              </td>
+              <td className="p-3 border text-green-600 font-semibold">
+                <div className="flex justify-center">
+                  <Link
+                    to="biology"
+                    className="text-xs flex items-center gap-1 bg-secondary text-slate-50 px-2 py-1 rounded-lg"
+                  >
+                    <span>Details</span>
+                    <RxCaretRight />
+                  </Link>
+                </div>
+              </td>
+            </tr>
+            <tr className="hover:bg-gray-50">
+              <td className="p-3 border">
+                <h2 className="font-bold text-sm">Agriculture</h2>
+                <p className="text-xs text-gray-500">2025-02-14</p>
+              </td>
+              <td className="p-3 border text-center">
+                <h2 className="font-bold text-sm">78%</h2>
+              </td>
+              <td className="p-3 border text-center">
+                <h2 className="font-bold text-sm">Pass</h2>
+              </td>
+              <td className="p-3 border text-green-600 font-semibold">
+                <div className="flex justify-center">
+                  <Link
+                    to="biology"
+                    className="text-xs flex items-center gap-1 bg-secondary text-slate-50 px-2 py-1 rounded-lg"
+                  >
+                    <span>Details</span>
+                    <RxCaretRight />
+                  </Link>
+                </div>
+              </td>
+            </tr>
+            <tr className="hover:bg-gray-50">
+              <td className="p-3 border">
+                <h2 className="font-bold text-sm">Physics</h2>
+                <p className="text-xs text-gray-500">2025-02-14</p>
+              </td>
+              <td className="p-3 border text-center">
+                <h2 className="font-bold text-sm">90%</h2>
+              </td>
+              <td className="p-3 border text-center">
+                <h2 className="text-sm font-bold">Pass</h2>
+              </td>
+              <td className="p-3 border text-green-600 font-semibold">
+                <div className="flex justify-center">
+                  <Link
+                    to="biology"
+                    className="text-xs flex items-center gap-1 bg-secondary text-slate-50 px-2 py-1 rounded-lg"
+                  >
+                    <span>Details</span>
+                    <RxCaretRight />
+                  </Link>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <div className="flex text-left flex-col gap-5">
-        <div className="grid grid-cols-4 gap-4">
+        {/* <div className="grid grid-cols-4 gap-4">
           <div className="">
             <h2 className="font-bold text-sm">Biology</h2>
             <p className="text-xs text-gray-500">2025-02-14</p>
@@ -84,8 +239,8 @@ function SubjectPerformance() {
               <RxCaretRight />
             </Link>
           </div>
-        </div>
-        <div className="grid grid-cols-4 gap-4">
+        </div> */}
+        {/*  <div className="grid grid-cols-4 gap-4">
           <div className="">
             <h2 className="font-bold text-sm">Maths</h2>
             <p className="text-xs text-gray-500">2025-02-10</p>
@@ -107,8 +262,8 @@ function SubjectPerformance() {
               <RxCaretRight />
             </Link>
           </div>
-        </div>
-        <div className="grid grid-cols-4 gap-2">
+        </div> */}
+        {/*   <div className="grid grid-cols-4 gap-2">
           <div className="">
             <h2 className="font-bold text-sm">Geography</h2>
             <p className="text-xs text-gray-500">2025-02-14</p>
@@ -130,8 +285,8 @@ function SubjectPerformance() {
               <RxCaretRight />
             </Link>
           </div>
-        </div>
-        <div className="grid grid-cols-4 gap-2">
+        </div> */}
+        {/* <div className="grid grid-cols-4 gap-2">
           <div className="">
             <h2 className="font-bold text-sm">Physics</h2>
             <p className="text-xs text-gray-500">2025-02-14</p>
@@ -153,8 +308,8 @@ function SubjectPerformance() {
               <RxCaretRight />
             </Link>
           </div>
-        </div>
-        <div className="grid grid-cols-4 gap-2">
+        </div> */}
+        {/*   <div className="grid grid-cols-4 gap-2">
           <div className="">
             <h2 className="font-bold text-sm">Agriculture</h2>
             <p className="text-xs text-gray-500">2025-02-14</p>
@@ -176,7 +331,7 @@ function SubjectPerformance() {
               <RxCaretRight />
             </Link>
           </div>
-        </div>
+        </div> */}
       </div>
     </main>
   );

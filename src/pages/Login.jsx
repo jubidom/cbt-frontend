@@ -27,8 +27,11 @@ function Login() {
     // if (login.fulfilled.match(loginSuccess)) {
     //   navigate("/dashboard");
     // }
-
-    navigate("/dashboard");
+    if (activeTab === "student" && studentLogin.email !== "") {
+      navigate("/studentdashboard");
+    } else {
+      navigate("/admindashboard");
+    }
 
     setStudentLogin({ email: "", password: "" });
     setAdminLogin({ email: "", password: "" });
