@@ -28,7 +28,7 @@ function DailyAttemptsLineChart({ data }) {
           <Line
             type="monotone"
             dataKey="attempts"
-            stroke="#7a0e74"
+            stroke="#f7afe5"
             strokeWidth={3}
             dot={{ r: 5 }}
             activeDot={{ r: 7 }}
