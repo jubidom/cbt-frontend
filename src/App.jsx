@@ -84,10 +84,10 @@ function App() {
           children: [
             {
               index: true,
-              element: <Navigate to="dashboard" replace />,
+              element: <Navigate to="studentdashboard" replace />,
             },
-            { path: "dashboard", element: <Dashboard /> },
-            { path: "profile", element: <StudentProfile /> },
+            { path: "studentdashboard", element: <Dashboard /> },
+            { path: "studentprofile", element: <StudentProfile /> },
             {
               path: "exams",
               element: <ExamsGrid />,
@@ -110,7 +110,6 @@ function App() {
           ],
         },
         {
-          // path: "admindashboard",
           element: <AdminDashboard />,
           children: [
             {

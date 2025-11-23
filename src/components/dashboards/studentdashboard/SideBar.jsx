@@ -8,7 +8,7 @@ import Button from "../../Button";
 
 const btnStyle = `inline-block px-4 py-2 rounded-full text-black w-full active:text-secondary focus:text-secondary active:bg-primary focus:bg-primary text-primary border border-primary font-semibold flex items-center gap-2`;
 
-const tabs = ["dashboard", "profile", "exams", "history"];
+const tabs = ["studentdashboard", "studentprofile", "exams", "history"];
 const text = ["Dashboard", "Student Profile", "Exams", "History"];
 const icons = [<LuLayoutDashboard />, <FaRegUser />, <FaBook />, <FaHistory />];
 
@@ -34,7 +34,6 @@ function SideBar({ onhandleActiveTab, activeTab }) {
                 }
               >
                 <span title={tabOpt}>{icons[i]}</span>
-
                 {text[i]}
               </Button>
             );
