@@ -16,7 +16,7 @@ function AdminDashboard() {
       <SideBar onhandleActiveTab={handleActiveTab} activeTab={activeTab} />
       {isOpen && <MobileNav setIsOpen={setIsOpen} />}
       <div className="lg:h-screen flex-grow overflow-y-auto">
-        <MainDisplay>
+        <MainDisplay setIsOpen={setIsOpen}>
           <Outlet />
         </MainDisplay>
       </div>
