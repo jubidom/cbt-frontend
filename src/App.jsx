@@ -25,39 +25,6 @@ import Analytics from "./components/dashboards/admindashboard/Analytics";
 function App() {
   const router = createBrowserRouter([
     {
-      element: <MainLayout />,
-      errorElement: <ErrorPage />,
-      children: [
-        {
-          element: <StudentDashboard />,
-          children: [
-            {
-              index: true,
-              element: <Navigate to="dashboard" replace />,
-            },
-            { path: "dashboard", element: <Dashboard /> },
-            { path: "student's profile", element: <StudentProfile /> },
-            { path: "exams", element: <ExamComponent /> },
-            { path: "history", element: <ExamsHistory /> },
-          ],
-        },
-        {
-          path: "admindashboard",
-          element: <AdminDashboard />,
-          children: [
-            {
-              index: true,
-              element: <Navigate to="profile" replace />,
-            },
-            // { path: "profile", element: <Profile /> },
-            // { path: "registerstudent", element: <RegisterStudent /> },
-            // { path: "uploadexams", element: <UploadExams /> },
-            // { path: "uploadanswers", element: <UploadAnswers /> },
-          ],
-        },
-      ],
-    },
-    {
       path: "/",
       element: <AuthLayout />,
       children: [
