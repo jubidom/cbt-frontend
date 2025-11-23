@@ -21,7 +21,7 @@ function PassRateBarChart({ data }) {
           <XAxis dataKey="subject" />
           <YAxis />
           <Tooltip />
-          <Bar dataKey="passRate" fill="#7a0e74" />
+          <Bar dataKey="passRate" fill="#f7afe5" />
         </BarChart>
       </ResponsiveContainer>
     </div>
