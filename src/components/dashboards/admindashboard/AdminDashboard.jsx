@@ -5,7 +5,7 @@ import SideBar from "./SideBar";
 import MainDisplay from "./MainDisplay";
 
 function AdminDashboard() {
-  const [activeTab, setActiveTab] = useState("dashboard");
+  const [activeTab, setActiveTab] = useState("admindashboard");
   const [isOpen, setIsOpen] = useState(false);
 
   function handleActiveTab(tab) {

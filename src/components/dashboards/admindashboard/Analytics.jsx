@@ -49,12 +49,8 @@ function Analytics() {
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-7">
         <div className="bg-white shadow rounded-xl p-6 h-72 border flex items-center justify-center">
           <DailyAttemptsLineChart data={dailyAttemptsData} />
-          {/* <p className="text-gray-400">Line chart showing students' attempts</p> */}
         </div>
         <div className="bg-white shadow rounded-xl p-6 h-72 border flex items-center justify-center">
-          {/* <p className="text-gray-400">
-            Bar chart showing pass rate by subjects
-          </p> */}
           <PassRateBarChart data={passRateData} />
         </div>
       </section>
