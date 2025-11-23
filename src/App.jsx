@@ -20,6 +20,7 @@ import Subjects from "./components/dashboards/studentdashboard/Subjects";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import SubjectPerformance from "./components/dashboards/studentdashboard/SubjectPerformance";
 import ExamScoreDetail from "./components/dashboards/studentdashboard/ExamScoreDetail";
+import Analytics from "./components/dashboards/admindashboard/Analytics";
 
 function App() {
   const router = createBrowserRouter([
@@ -86,7 +87,7 @@ function App() {
               element: <Navigate to="dashboard" replace />,
             },
             { path: "dashboard", element: <Dashboard /> },
-            { path: "studentprofile", element: <StudentProfile /> },
+            { path: "profile", element: <StudentProfile /> },
             {
               path: "exams",
               element: <ExamsGrid />,
@@ -109,14 +110,14 @@ function App() {
           ],
         },
         {
-          path: "admindashboard",
+          // path: "admindashboard",
           element: <AdminDashboard />,
           children: [
             {
               index: true,
-              element: <Navigate to="profile" replace />,
+              element: <Navigate to="admindashboard" replace />,
             },
-            // { path: "profile", element: <Profile /> },
+            { path: "admindashboard", element: <Analytics /> },
             // { path: "registerstudent", element: <RegisterStudent /> },
             // { path: "uploadexams", element: <UploadExams /> },
             // { path: "uploadanswers", element: <UploadAnswers /> },
