@@ -37,11 +37,11 @@ function Analytics() {
           </div>
           <div className="bg-white shadow-md rounded-xl p-5 border border-slate-300">
             <p className="text-sm text-gray-500">Pass Rate</p>
-            <h1 className="text-3xl font-bold mt-2">98%</h1>
+            <h1 className="text-3xl font-bold mt-2">97%</h1>
           </div>
           <div className="bg-white shadow-md rounded-xl p-5 border border-slate-300">
             <p className="text-sm text-gray-500">Fail Rate</p>
-            <h1 className="text-3xl font-bold mt-2">2%</h1>
+            <h1 className="text-3xl font-bold mt-2">3%</h1>
           </div>
         </div>
       </section>
