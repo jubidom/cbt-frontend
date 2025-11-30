@@ -8,7 +8,7 @@ import MainLayout from "./layout/MainLayout";
 import AuthLayout from "./layout/AuthLayout";
 import ErrorPage from "./error/ErrorPage";
 import Login from "./pages/Login";
-import SignupForm from "./components/SignupForm";
+import SignupForm from "./pages/SignupForm";
 import StudentDashboard from "./components/dashboards/studentdashboard/StudentDashboard";
 import AdminDashboard from "./components/dashboards/admindashboard/AdminDashboard";
 import Dashboard from "./components/dashboards/studentdashboard/Dashboard";
@@ -17,10 +17,17 @@ import ExamComponent from "./components/dashboards/studentdashboard/ExamComponen
 import ExamsHistory from "./components/dashboards/studentdashboard/ExamsHistory";
 import ExamsGrid from "./components/dashboards/studentdashboard/ExamsGrid";
 import Subjects from "./components/dashboards/studentdashboard/Subjects";
-import ProtectedRoute from "./routes/ProtectedRoute";
 import SubjectPerformance from "./components/dashboards/studentdashboard/SubjectPerformance";
 import ExamScoreDetail from "./components/dashboards/studentdashboard/ExamScoreDetail";
 import Analytics from "./components/dashboards/admindashboard/Analytics";
+import ManageExams from "./components/dashboards/admindashboard/ManageExams";
+import AdminExamList from "./components/dashboards/admindashboard/AdminExamList";
+import UpdateExam from "./components/dashboards/admindashboard/UpdateExam";
+import Results from "./components/dashboards/admindashboard/Results";
+
+import UploadExam from "./components/dashboards/admindashboard/UploadExam";
+import UpdateStudent from "./components/dashboards/admindashboard/UpdateStudent";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 function App() {
   const router = createBrowserRouter([
@@ -84,9 +91,25 @@ function App() {
               element: <Navigate to="admindashboard" replace />,
             },
             { path: "admindashboard", element: <Analytics /> },
-            // { path: "registerstudent", element: <RegisterStudent /> },
-            // { path: "uploadexams", element: <UploadExams /> },
-            // { path: "uploadanswers", element: <UploadAnswers /> },
+
+            {
+              path: "manageexams",
+              element: <ManageExams />,
+              children: [
+                {
+                  index: true,
+                  element: <AdminExamList />,
+                },
+                {
+                  path: "update/:id",
+                  element: <UpdateExam />,
+                },
+              ],
+            },
+            ,
+            { path: "results", element: <Results /> },
+            { path: "uploadexams", element: <UploadExam /> },
+            { path: "userconfig", element: <UpdateStudent /> },
           ],
         },
       ],

@@ -10,40 +10,36 @@ import { FiActivity } from "react-icons/fi";
 
 import { TbLogout } from "react-icons/tb";
 import Button from "../../Button";
+import logo from "../../../assets/logo.png";
 
 const btnStyle = `inline-block px-4 py-2 rounded-full text-black w-full active:text-secondary focus:text-secondary active:bg-primary focus:bg-primary text-primary border border-primary font-semibold flex items-center gap-2`;
 
-const tabs = [
-  "admindashboard",
-  "userconfig",
-  "manageexams",
-  "questionbank",
-  "examsscores",
-  "managesubject",
-  "adminsettings",
-  "adminactivities",
-];
-
-const text = [
-  "Admin Dashboard",
-  "User Config",
-  "Manage Exams",
-  "Question Bank",
-  "Exams Scores",
-  "Manage Subject",
-  "Admin Settings",
-  "Admin Activities",
-];
-
-const icons = [
-  <MdDashboard />,
-  <FaUsersCog />,
-  <PiExam />,
-  <TbPencilQuestion />,
-  <GrScorecard />,
-  <LuLibraryBig />,
-  <IoMdSettings />,
-  <FiActivity />,
+const sidebarItems = [
+  {
+    path: "admindashboard",
+    label: "Admin Dashboard",
+    icon: <MdDashboard />,
+  },
+  {
+    path: "manageexams",
+    label: "Manage Exams",
+    icon: <TbPencilQuestion />,
+  },
+  {
+    path: "results",
+    label: "Results",
+    icon: <GrScorecard />,
+  },
+  {
+    path: "userconfig",
+    label: "User Config",
+    icon: <FaUsersCog />,
+  },
+  {
+    path: "uploadexams",
+    label: "Upload Exams",
+    icon: <PiExam />,
+  },
 ];
 
 function MobileNav({ onhandleActiveTab, activeTab, setIsOpen }) {
@@ -51,7 +47,7 @@ function MobileNav({ onhandleActiveTab, activeTab, setIsOpen }) {
     <aside className=" fixed top-0 bottom-0 left-0 h-screen w-full bg-[rgba(0,0,0,0.2)] z-10 ">
       <section className="bg-secondary h-full w-60 flex flex-col px-4 py-2 rounded-br-3xl rounded-tr-3xl">
         <div className="pt-3 pb-6 flex items-center justify-between">
-          <h1 className="font-semibold text-lg text-white">LOGO</h1>
+          <img src={logo} alt="logo" className="w-14 h-14 block" />
           <IoClose
             className="text-2xl block lg:hidden cursor-pointer text-white"
             onClick={() => setIsOpen(false)}
@@ -59,21 +55,21 @@ function MobileNav({ onhandleActiveTab, activeTab, setIsOpen }) {
         </div>
         <div className="flex-grow flex flex-col justify-between px-1 py-2">
           <div className="flex flex-col gap-4">
-            {tabs.map((tabOpt, i) => {
+            {sidebarItems.map((tabOpt, i) => {
               return (
                 <Button
                   type="link"
-                  to={tabOpt}
-                  key={tabOpt}
-                  onClick={() => onhandleActiveTab(tabOpt)}
+                  to={tabOpt.path}
+                  key={tabOpt.path}
+                  onClick={() => onhandleActiveTab(tabOpt.path)}
                   className={
-                    activeTab === tabOpt
+                    activeTab === tabOpt.path
                       ? `${btnStyle} bg-primary text-secondary`
                       : btnStyle
                   }
                 >
-                  <span title={tabOpt}>{icons[i]}</span>
-                  {text[i]}
+                  <span title={tabOpt}>{tabOpt.icon}</span>
+                  {tabOpt.label}
                 </Button>
               );
             })}

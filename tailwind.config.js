@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        secondary: "#7a0e74",
+        secondary: "#916894",
         primary: "#f4f4f4",
         cards: "fff",
         barchart: "#f7afe5",

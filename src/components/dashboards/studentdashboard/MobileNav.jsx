@@ -4,7 +4,7 @@ import { FaBook } from "react-icons/fa";
 import { FaRegUser } from "react-icons/fa6";
 import { FaHistory } from "react-icons/fa";
 import { TbLogout } from "react-icons/tb";
-
+import logo from "../../../assets/logo.png";
 import Button from "../../Button";
 
 const btnStyle = `inline-block px-4 py-2 rounded-full text-black w-full active:text-secondary focus:text-secondary active:bg-primary focus:bg-primary text-primary border border-primary font-semibold flex items-center gap-2`;
@@ -18,7 +18,7 @@ function MobileNav({ onhandleActiveTab, activeTab, setIsOpen }) {
     <aside className=" fixed top-0 bottom-0 left-0 h-screen w-full bg-[rgba(0,0,0,0.2)] z-10 ">
       <section className="bg-secondary h-full w-60 flex flex-col px-4 py-2 rounded-br-3xl rounded-tr-3xl">
         <div className="pt-3 pb-6 flex items-center justify-between">
-          <h1 className="font-semibold text-lg text-white">LOGO</h1>
+          <img src={logo} alt="logo" className="w-14 h-14 block" />
           <IoClose
             className="text-2xl block lg:hidden cursor-pointer text-white"
             onClick={() => setIsOpen(false)}

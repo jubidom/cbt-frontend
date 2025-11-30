@@ -1,9 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchStudentProfile,
-  updateStudentProfile,
-} from "./studentSlice";
+import { fetchStudentProfile, updateStudentProfile } from "./studentSlice";
 
 const StudentProfile = () => {
   const dispatch = useDispatch();
@@ -35,7 +32,7 @@ const StudentProfile = () => {
 
   useEffect(() => {
     dispatch(fetchStudentProfile());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (profile) {
@@ -99,64 +96,63 @@ const StudentProfile = () => {
 
   return (
     <div className="p-6 max-w-4xl mx-auto space-y-8">
-
       {/* AVATAR SECTION */}
-<div className="flex items-center gap-10 p-6 bg-white shadow-lg rounded-2xl">
+      <div className="flex items-center gap-10 p-6 bg-white shadow-lg rounded-2xl">
+        {/* Avatar + Webcam */}
+        <div className="relative w-32 h-32">
+          <img
+            src={preview || "https://i.pravatar.cc/150"}
+            alt="avatar"
+            className="w-32 h-32 rounded-full object-cover border shadow-md"
+          />
 
-  {/* Avatar + Webcam */}
-  <div className="relative w-32 h-32">
-    <img
-      src={preview || "https://i.pravatar.cc/150"}
-      alt="avatar"
-      className="w-32 h-32 rounded-full object-cover border shadow-md"
-    />
-
-    {/* Webcam Icon — bottom right overlay */}
-    <button
-      onClick={startCamera}
-      className="absolute bottom-0 right-0 w-10 h-10 bg-white rounded-full shadow-md 
+          {/* Webcam Icon — bottom right overlay */}
+          <button
+            onClick={startCamera}
+            className="absolute bottom-0 right-0 w-10 h-10 bg-white rounded-full shadow-md 
                  flex items-center justify-center cursor-pointer hover:bg-gray-100"
-    >
-      <img
-        src="https://cdn-icons-png.flaticon.com/512/727/727245.png"
-        alt="webcam"
-        className="w-6 h-6"
-      />
-    </button>
-  </div>
+          >
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/727/727245.png"
+              alt="webcam"
+              className="w-6 h-6"
+            />
+          </button>
+        </div>
 
-  {/* Update + Delete buttons moved DOWN a bit */}
-  <div className="flex flex-col gap-3">
-    <div className="flex items-center gap-4 mt-6">
+        {/* Update + Delete buttons moved DOWN a bit */}
+        <div className="flex flex-col gap-3">
+          <div className="flex items-center gap-4 mt-6">
+            {/* Update New */}
+            <label className="px-6 py-2 bg-purple-600 text-white rounded-xl shadow cursor-pointer hover:bg-purple-700">
+              Update New
+              <input
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={handleFileChange}
+              />
+            </label>
 
-      {/* Update New */}
-      <label className="px-6 py-2 bg-purple-600 text-white rounded-xl shadow cursor-pointer hover:bg-purple-700">
-        Update New
-        <input
-          type="file"
-          accept="image/*"
-          className="hidden"
-          onChange={handleFileChange}
-        />
-      </label>
-
-      {/* Delete Avatar */}
-      <button
-        onClick={deleteAvatar}
-        className="px-6 py-2 bg-gray-200 text-black rounded-xl shadow hover:bg-gray-300"
-      >
-        Delete Avatar
-      </button>
-    </div>
-  </div>
-</div>
-
+            {/* Delete Avatar */}
+            <button
+              onClick={deleteAvatar}
+              className="px-6 py-2 bg-gray-200 text-black rounded-xl shadow hover:bg-gray-300"
+            >
+              Delete Avatar
+            </button>
+          </div>
+        </div>
+      </div>
 
       {/* CAMERA POPUP */}
       {showCamera && (
         <div className="mb-10 bg-white shadow-lg p-6 rounded-2xl">
           <h2 className="text-lg font-semibold mb-3">Capture Photo</h2>
-          <video ref={videoRef} className="w-64 h-64 bg-black rounded-lg"></video>
+          <video
+            ref={videoRef}
+            className="w-64 h-64 bg-black rounded-lg"
+          ></video>
           <canvas ref={canvasRef} className="hidden"></canvas>
           <div className="flex gap-3 mt-4">
             <button
@@ -176,7 +172,10 @@ const StudentProfile = () => {
       )}
 
       {/* FORM */}
-      <form onSubmit={handleSubmit} className="bg-white shadow-lg p-6 rounded-2xl space-y-6">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white shadow-lg p-6 rounded-2xl space-y-6"
+      >
         {/* Name Row */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {["firstName", "middleName", "lastName"].map((field) => (
@@ -206,42 +205,40 @@ const StudentProfile = () => {
         </div>
 
         {/* Gender + NIN (horizontal) */}
-<div className="flex items-center gap-4">
+        <div className="flex items-center gap-4">
+          {/* Male */}
+          <label className="flex items-center gap-2 border p-3 rounded-xl bg-primary text-secondary shadow-sm w-40">
+            <input
+              type="radio"
+              name="gender"
+              value="male"
+              checked={formData.gender === "male"}
+              onChange={handleChange}
+            />
+            Male
+          </label>
 
-  {/* Male */}
-  <label className="flex items-center gap-2 border p-3 rounded-xl bg-primary text-secondary shadow-sm w-40">
-    <input
-      type="radio"
-      name="gender"
-      value="male"
-      checked={formData.gender === "male"}
-      onChange={handleChange}
-    />
-    Male
-  </label>
+          {/* Female */}
+          <label className="flex items-center gap-2 border p-3 rounded-xl bg-primary text-secondary shadow-sm w-40">
+            <input
+              type="radio"
+              name="gender"
+              value="female"
+              checked={formData.gender === "female"}
+              onChange={handleChange}
+            />
+            Female
+          </label>
 
-  {/* Female */}
-  <label className="flex items-center gap-2 border p-3 rounded-xl bg-primary text-secondary shadow-sm w-40">
-    <input
-      type="radio"
-      name="gender"
-      value="female"
-      checked={formData.gender === "female"}
-      onChange={handleChange}
-    />
-    Female
-  </label>
-
-  {/* NIN */}
-  <input
-    name="nin"
-    placeholder="NIN"
-    value={formData.nin}
-    onChange={handleChange}
-    className={`border ${btnStyle} p-3 rounded-xl bg-primary text-secondary shadow-sm flex-1`}
-  />
-</div>
-
+          {/* NIN */}
+          <input
+            name="nin"
+            placeholder="NIN"
+            value={formData.nin}
+            onChange={handleChange}
+            className={`border ${btnStyle} p-3 rounded-xl bg-primary text-secondary shadow-sm flex-1`}
+          />
+        </div>
 
         {/* DOB + Nationality */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -252,20 +249,27 @@ const StudentProfile = () => {
             onChange={handleChange}
             className={`border ${btnStyle} p-3 rounded-xl bg-primary text-secondary shadow-sm`}
           />
-          <select
+
+          <p
+            className={`border ${btnStyle} p-3 rounded-xl bg-primary text-secondary shadow-sm`}
+          >
+            Nigeria
+          </p>
+          {/* <select
             name="nationality"
             value={formData.nationality}
             onChange={handleChange}
+            disabled
             className={`border ${btnStyle} p-3 rounded-xl bg-primary text-secondary shadow-sm`}
           >
             <option value="">Select Country</option>
-            {/* Full list of countries can be populated here */}
+
             <option>Nigeria</option>
             <option>Ghana</option>
             <option>Kenya</option>
             <option>United States</option>
             <option>United Kingdom</option>
-          </select>
+          </select> */}
         </div>
 
         {/* Address */}
@@ -275,11 +279,9 @@ const StudentProfile = () => {
           value={formData.address}
           onChange={handleChange}
           rows="3"
+          disabled
           className={`border ${btnStyle} p-3 rounded-xl w-full bg-primary text-secondary shadow-sm`}
         ></textarea>
-        <button className="bg-purple-600 text-white px-6 py-3 rounded-lg w-full shadow-md hover:bg-purple-700">
-          Save Changes
-        </button>
       </form>
 
       {/* HELP MODAL */}
@@ -288,7 +290,8 @@ const StudentProfile = () => {
           <div className="bg-white p-6 rounded-xl w-80 shadow-lg">
             <h2 className="text-xl font-semibold mb-3">Help</h2>
             <p className="text-gray-700">
-              Update your profile, upload images, or take a photo using your webcam.
+              Update your profile, upload images, or take a photo using your
+              webcam.
             </p>
             <button
               onClick={() => setHelpOpen(false)}
@@ -304,4 +307,3 @@ const StudentProfile = () => {
 };
 
 export default StudentProfile;
-

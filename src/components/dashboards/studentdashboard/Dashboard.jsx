@@ -1,8 +1,6 @@
 import { Calender } from "../../Calender";
 import Welcome from "./Welcome";
 import History from "./History";
-import PieChartt from "../../PieChartt";
-import BarChart from "../../BarChart";
 
 function Dashboard() {
   return (
@@ -12,9 +10,7 @@ function Dashboard() {
         <Calender className="lg:flex-1 border border-gray-200 py-4 px-4 text-center shadow-md rounded-lg w-full" />
       </section>
       <section className="flex flex-col gap-2 lg:flex-row mt-7">
-        <History className="flex-grow overflow-x-auto  rounded-lg py-3 px-2 shadow-md" />
-        <PieChartt className="flex-grow rounded-lg py-3 px-2 shadow-md flex items-center" />
-        <BarChart className="flex-grow rounded-lg py-3 px-2 shadow-md" />
+        <History className="bg-white shadow rounded-xl p-6 border space-y-6 mb-7 w-full" />
       </section>
     </main>
   );

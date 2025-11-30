@@ -3,6 +3,9 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../auth/authSlice.js";
 import formImage from "../assets/formImage.jpg";
+import welcome_logo from "../assets/welcome_logo.jpg";
+import schlogo from "../assets/sch_logo.jpg";
+import purplelogo from "../assets/purple_bg.jpg";
 
 function Login() {
   const [activeTab, setActiveTab] = useState("student");
@@ -38,11 +41,40 @@ function Login() {
   };
 
   return (
-    <section className="min-h-dvh max-h-fit flex bg-white">
-      <div className="hidden lg:block w-2/4">
-        <img src={formImage} alt="" className="block h-full object-contain" />
+    <section className="h-dvh min-h-dvh flex bg-white  ">
+      {/* py-20 items-center*/}
+      <div className="hidden lg:flex w-2/4 h-full">
+        {/* lg:block w-2/4 bg-[#f1f1f1]*/}
+        {/* <img src={formImage} alt="" className="block h-full object-contain" /> */}
+        {/* <img
+          src={welcome_logo}
+          alt=""
+          className="block h-full flex-grow object-cover"
+        /> */}
+        {/* <img
+          src={welcome_logo}
+          alt=""
+          className="block h-full flex-grow object-cover"
+        /> */}
+        {/* <img
+          src={schlogo}
+          alt=""
+          className="block h-full flex-grow object-cover"
+        /> */}
+        {/* <img
+          src={schlogo}
+          alt=""
+          className="block h-full flex-grow object-cover"
+        /> */}
+        <img
+          src={purplelogo}
+          alt=""
+          className="block h-full flex-grow object-cover"
+        />
       </div>
-      <div className=" w-full lg:w-2/4 py-[90px] px-6 md:px-16 flex flex-col justify-center">
+
+      <div className="w-full lg:w-2/4 px-6 md:px-16 flex flex-col justify-center h-full">
+        {/* py-[72px] bg-[#f1f1f1]*/}
         <div className="flex flex-col mb-8 gap-4">
           <h1 className="font-bold text-xl">Login</h1>
           <div className="flex items-center gap-4 text-sm">
@@ -117,7 +149,7 @@ function Login() {
             type="submit"
             className="inline-block px-4 py-2 min-h-11 text-center font-semibold bg-secondary  text-white rounded-xl mt-6"
           >
-            {activeTab === "student" ? "Log in as Student" : "Log in as Admin"}
+            {activeTab === "student" ? "Login Student" : "Login Admin"}
           </button>
           <p className="text-sm">
             Don't Have an Account?{" "}

@@ -1,68 +1,98 @@
+import Button from "../../Button";
+
 function History({ className }) {
   return (
     <section className={className}>
-      <h1 className="mb-4 text-lg font-bold">Subject Status</h1>
-      <div className="h-56 overflow-y-auto no-scrollbar">
-        <table className="w-full text-left table-auto min-w-max border-separate border-spacing-x-0 border-spacing-y-2 border border-gray-300 rounded-lg py-3 px-2 overflow-y-auto">
-          <thead className="">
-            <tr>
-              <th>Subject</th>
-              <th className="text-center">Score</th>
-              <th className="text-center">Status</th>
+      <h3 className="text-xl font-semibold">Student's Performance</h3>
+      <div action="" className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="border rounded-lg p-3 w-full flex items-center gap-1 justify-between">
+          <p className="flex items-center gap-1">
+            <strong className=" text-green-600 font-semibold">Passed:</strong>{" "}
+            <strong className="text-gray-700">3</strong>
+          </p>
+          <p className="flex items-center gap-1">
+            <strong className=" text-red-600 font-semibold">Fail:</strong>{" "}
+            <strong className="text-gray-700">1</strong>
+          </p>
+          <p className="flex items-center gap-1">
+            <strong className=" text-yellow-600 font-semibold">Pending:</strong>
+            <strong className="text-gray-700">2</strong>
+          </p>
+        </div>
+
+        <select
+          name="select"
+          id="select"
+          className="border rounded-lg p-3 w-full"
+        >
+          <option value="">All Subjects</option>
+          <option value="pass">Pass</option>
+          <option value="fail">Fail</option>
+          <option value="pending">Pending</option>
+        </select>
+      </div>
+      <div className="overflow-x-auto block md:table w-full">
+        <table className="w-full border-collapse">
+          <thead className="hover:bg-gray-200">
+            <tr className="bg-gray-50 text-left">
+              <th className="p-3 border">Subject</th>
+              <th className="p-3 border">Department</th>
+              <th className="p-3 border">Score</th>
+              <th className="p-3 border">Status</th>
             </tr>
           </thead>
-          <tbody className=" ">
-            <tr className="bg-[#f4f4f4]">
-              <td className="px-2 py-3">Mathematics</td>
-              <td className="px-2 py-3">82%</td>
-              <td className="text-green-700 font-bold py-1 text-center">
-                Pass
-              </td>
+          <tbody>
+            <tr className="hover:bg-gray-50">
+              <td className="p-3 border">Mathematics</td>
+              <td className="p-3 border">Science</td>
+              <td className="p-3 border">88%</td>
+              <td className="p-3 border text-green-600 font-semibold">Pass</td>
             </tr>
-            <tr className="bg-[#f4f4f4]">
-              <td className="px-2 py-3">English</td>
-              <td className="px-2 py-3">59%</td>
-              <td className="text-red-700 font-bold py-1 text-center">Fail</td>
+            <tr className="hover:bg-gray-50">
+              <td className="p-3 border">English</td>
+              <td className="p-3 border">Science</td>
+              <td className="p-3 border">49%</td>
+              <td className="p-3 border text-red-600 font-semibold">Fail</td>
             </tr>
-            <tr className="bg-[#f4f4f4]">
-              <td className="px-2 py-3">Chemistry</td>
-              <td className="px-2 py-3">Nil</td>
-              <td className="text-yellow-600 font-bold py-1 text-center">
-                Pass
-              </td>
+            <tr className="hover:bg-gray-50">
+              <td className="p-3 border">Chemistry</td>
+              <td className="p-3 border">Science</td>
+              <td className="p-3 border">94%</td>
+              <td className="p-3 border text-green-600 font-semibold">Pass</td>
             </tr>
-            <tr className="bg-[#f4f4f4]">
-              <td className="px-2 py-3">Physics</td>
-              <td className="px-2 py-3">92%</td>
-              <td className="text-green-700 font-bold py-1 text-center">
-                Pass
-              </td>
-            </tr>
-            <tr className="bg-[#f4f4f4]">
-              <td className="px-2 py-3">Geography</td>
-              <td className="px-2 py-3">Nil</td>
-              <td className="text-yellow-600 font-bold py-1 text-center">
+            <tr className="hover:bg-gray-50">
+              <td className="p-3 border">Physics</td>
+              <td className="p-3 border">Science</td>
+              <td className="p-3 border">Nil</td>
+              <td className="p-3 border text-yellow-600 font-semibold">
                 Pending
               </td>
             </tr>
-            <tr className="bg-[#f4f4f4]">
-              <td className="px-2 py-3">Agriculture</td>
-              <td className="px-2 py-3">52%</td>
-              <td className="text-red-700 font-bold py-1 text-center">Fail</td>
+            <tr className="hover:bg-gray-50">
+              <td className="p-3 border">Biology</td>
+              <td className="p-3 border">Science</td>
+              <td className="p-3 border">94%</td>
+              <td className="p-3 border text-green-600 font-semibold">Pass</td>
             </tr>
-            <tr className="bg-[#f4f4f4]">
-              <td className="px-2 py-3">Economics</td>
-              <td className="text-green-700 font-bold text-center">Nil</td>
-              <td className="text-yellow-600 font-bold text-center">Pending</td>
-            </tr>
-            <tr className="bg-[#f4f4f4]">
-              <td className="px-2 py-3">Computer</td>
-
-              <td className="text-yellow-600 font-bold text-center">Nil</td>
-              <td className="text-yellow-600 font-bold text-center">Pending</td>
+            <tr className="hover:bg-gray-50">
+              <td className="p-3 border">Agriculture</td>
+              <td className="p-3 border">Science</td>
+              <td className="p-3 border">Nil</td>
+              <td className="p-3 border text-yellow-600 font-semibold">
+                Pending
+              </td>
             </tr>
           </tbody>
         </table>
+      </div>
+      {/* pagination section */}
+      <div className="flex items-center justify-evenly pt-4">
+        <Button className="bg-secondary px-4 py-2 rounded-lg text-white">
+          Prev
+        </Button>
+        <Button className="bg-secondary px-4 py-2 rounded-lg text-white">
+          Next
+        </Button>
       </div>
     </section>
   );

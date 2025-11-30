@@ -85,33 +85,85 @@ function Analytics() {
             <thead className="hover:bg-gray-200">
               <tr className="bg-gray-50 text-left">
                 <th className="p-3 border">Student Name</th>
-                <th className="p-3 border">Department</th>
-                <th className="p-3 border">Recent Score</th>
-                <th className="p-3 border">Status</th>
+                <th className="p-3 border text-center">Department</th>
+                <th className="p-3 border text-center">Mathematics</th>
+                <th className="p-3 border text-center">English</th>
+                <th className="p-3 border text-center">Chemistry</th>
+                <th className="p-3 border text-center">Physics</th>
+                <th className="p-3 border text-center">Biology</th>
+                <th className="p-3 border text-center">Agriculture</th>
+                <th className="p-3 border text-center">Average</th>
+                <th className="p-3 border text-center">Status</th>
               </tr>
             </thead>
             <tbody>
               <tr className="hover:bg-gray-50">
                 <td className="p-3 border">Ola Seun</td>
-                <td className="p-3 border">Science</td>
-                <td className="p-3 border">88%</td>
-                <td className="p-3 border text-green-600 font-semibold">
+                <td className="p-3 border text-center">Science</td>
+                <td className="p-3 border text-center">88%</td>
+                <td className="p-3 border text-center">98%</td>
+                <td className="p-3 border text-center">78%</td>
+                <td className="p-3 border text-center">48%</td>
+                <td className="p-3 border text-center">68%</td>
+                <td className="p-3 border text-center">80%</td>
+                <td className="p-3 border text-center">90.10</td>
+                <td className="p-3 border text-green-600 font-semibold text-center">
                   Pass
                 </td>
               </tr>
               <tr className="hover:bg-gray-50">
-                <td className="p-3 border">Adamu Isa</td>
-                <td className="p-3 border">Science</td>
-                <td className="p-3 border">89%</td>
-                <td className="p-3 border text-green-600 font-semibold">
+                <td className="p-3 border">Ola Seun</td>
+                <td className="p-3 border text-center">Science</td>
+                <td className="p-3 border text-center">88%</td>
+                <td className="p-3 border text-center">98%</td>
+                <td className="p-3 border text-center">78%</td>
+                <td className="p-3 border text-center">48%</td>
+                <td className="p-3 border text-center">68%</td>
+                <td className="p-3 border text-center">80%</td>
+                <td className="p-3 border text-center">90.10</td>
+                <td className="p-3 border text-green-600 font-semibold text-center">
                   Pass
                 </td>
               </tr>
               <tr className="hover:bg-gray-50">
-                <td className="p-3 border">Eke Udoji</td>
-                <td className="p-3 border">Science</td>
-                <td className="p-3 border">94%</td>
-                <td className="p-3 border text-green-600 font-semibold">
+                <td className="p-3 border">Ola Seun</td>
+                <td className="p-3 border text-center">Science</td>
+                <td className="p-3 border text-center">88%</td>
+                <td className="p-3 border text-center">98%</td>
+                <td className="p-3 border text-center">78%</td>
+                <td className="p-3 border text-center">48%</td>
+                <td className="p-3 border text-center">68%</td>
+                <td className="p-3 border text-center">80%</td>
+                <td className="p-3 border text-center">90.10</td>
+                <td className="p-3 border text-green-600 font-semibold text-center">
+                  Pass
+                </td>
+              </tr>
+              <tr className="hover:bg-gray-50">
+                <td className="p-3 border">Ola Seun</td>
+                <td className="p-3 border text-center">Science</td>
+                <td className="p-3 border text-center">88%</td>
+                <td className="p-3 border text-center">98%</td>
+                <td className="p-3 border text-center">78%</td>
+                <td className="p-3 border text-center">48%</td>
+                <td className="p-3 border text-center">68%</td>
+                <td className="p-3 border text-center">80%</td>
+                <td className="p-3 border text-center">90.10</td>
+                <td className="p-3 border text-green-600 font-semibold text-center">
+                  Pass
+                </td>
+              </tr>
+              <tr className="hover:bg-gray-50">
+                <td className="p-3 border">Ola Seun</td>
+                <td className="p-3 border text-center">Science</td>
+                <td className="p-3 border text-center">88%</td>
+                <td className="p-3 border text-center">98%</td>
+                <td className="p-3 border text-center">78%</td>
+                <td className="p-3 border text-center">48%</td>
+                <td className="p-3 border text-center">68%</td>
+                <td className="p-3 border text-center">80%</td>
+                <td className="p-3 border text-center">90.10</td>
+                <td className="p-3 border text-green-600 font-semibold text-center">
                   Pass
                 </td>
               </tr>

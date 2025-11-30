@@ -58,7 +58,8 @@ function ExamScoreDetail() {
             Question Summary
           </h1>
           <div className="">
-            <ul className="flex flex-col lg:gap-5 gap-4 lg:px-8 px-0">
+            <ul className="flex flex-col lg:gap-5 gap-4">
+              {/* lg:px-8 px-0 */}
               <li className="flex justify-between border py-2 px-2 rounded-lg">
                 <p className="text-lg font-semibold">What is photosynthesis?</p>
                 <div className="flex gap-3">

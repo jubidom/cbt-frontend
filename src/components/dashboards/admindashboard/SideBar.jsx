@@ -9,67 +9,62 @@ import { FiActivity } from "react-icons/fi";
 
 import { TbLogout } from "react-icons/tb";
 import Button from "../../Button";
+import logo from "../../../assets/logo.png";
 
 const btnStyle = `inline-block px-4 py-2 rounded-full text-black w-full active:text-secondary focus:text-secondary active:bg-primary focus:bg-primary text-primary border border-primary font-semibold flex items-center gap-2`;
 
-const tabs = [
-  "admindashboard",
-  "userconfig",
-  "manageexams",
-  "questionbank",
-  "examsscores",
-  "managesubject",
-  "adminsettings",
-  "adminactivities",
-];
-
-const text = [
-  "Admin Dashboard",
-  "User Config",
-  "Manage Exams",
-  "Question Bank",
-  "Exams Scores",
-  "Manage Subject",
-  "Admin Settings",
-  "Admin Activities",
-];
-
-const icons = [
-  <MdDashboard />,
-  <FaUsersCog />,
-  <PiExam />,
-  <TbPencilQuestion />,
-  <GrScorecard />,
-  <LuLibraryBig />,
-  <IoMdSettings />,
-  <FiActivity />,
+const sidebarItems = [
+  {
+    path: "admindashboard",
+    label: "Admin Dashboard",
+    icon: <MdDashboard />,
+  },
+  {
+    path: "manageexams",
+    label: "Manage Exams",
+    icon: <TbPencilQuestion />,
+  },
+  {
+    path: "results",
+    label: "Results",
+    icon: <GrScorecard />,
+  },
+  {
+    path: "userconfig",
+    label: "User Config",
+    icon: <FaUsersCog />,
+  },
+  {
+    path: "uploadexams",
+    label: "Upload Exams",
+    icon: <PiExam />,
+  },
 ];
 
 function SideBar({ onhandleActiveTab, activeTab }) {
   return (
     <aside className="bg-secondary min-w-60 lg:flex flex-col px-4 py-2 rounded-br-2xl rounded-tr-2xl hidden">
       <div className="py-6">
-        <h1>Logo</h1>
+        <img src={logo} alt="logo" className="w-14 h-14 block" />
       </div>
       <div className="flex-grow flex flex-col justify-between px-1 py-2">
         <div className="flex flex-col gap-4">
-          {tabs.map((tabOpt, i) => {
+          {sidebarItems.map((tabOpt) => {
             return (
               <Button
                 type="link"
-                to={tabOpt}
-                key={tabOpt}
-                onClick={() => onhandleActiveTab(tabOpt)}
+                to={tabOpt.path}
+                key={tabOpt.path}
+                onClick={() => onhandleActiveTab(tabOpt.path)}
                 className={
-                  activeTab === tabOpt
+                  activeTab === tabOpt.path
                     ? `${btnStyle} bg-primary text-secondary`
                     : btnStyle
                 }
               >
-                <span title={tabOpt}>{icons[i]}</span>
+                <span title={tabOpt.label}>{tabOpt.icon}</span>
 
-                {/* {tabOpt.charAt(0).toUpperCase() + tabOpt.slice(1)} */}
-                {text[i]}
+                {tabOpt.label}
               </Button>
             );
           })}
