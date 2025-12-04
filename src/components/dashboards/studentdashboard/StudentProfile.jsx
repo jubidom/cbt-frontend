@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchStudentProfile, updateStudentProfile } from "./studentSlice";
+import { fetchStudentProfile } from "./studentSlice.js";
+// import { fetchStudentProfile } from "./studentSlice";
+// import { fetchStudentProfile, updateStudentProfile } from "./studentSlice";
 
 const StudentProfile = () => {
   const dispatch = useDispatch();
-  const { profile } = useSelector((state) => state.student);
+  const profile = useSelector((state) => state.student);
 
   const btnStyle = "border-gray-300"; // Theme border style
 
@@ -66,7 +68,7 @@ const StudentProfile = () => {
     const form = new FormData();
     Object.entries(formData).forEach(([key, value]) => form.append(key, value));
     if (avatar) form.append("avatar", avatar);
-    dispatch(updateStudentProfile(form));
+    // dispatch(updateStudentProfile(form));
   };
 
   const startCamera = async () => {

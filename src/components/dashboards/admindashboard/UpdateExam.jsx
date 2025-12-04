@@ -18,7 +18,7 @@ function UpdateExam() {
   return (
     <main>
       <Button
-        onClick={() => navigate("/manageexams")}
+        onClick={() => navigate(-1)}
         className="py-1 px-2 inline-block text-center shadow-md bg-secondary text-white cursor-pointer rounded-md text-sm"
       >
         Back

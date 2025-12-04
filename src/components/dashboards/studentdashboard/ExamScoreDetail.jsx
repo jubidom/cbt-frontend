@@ -8,7 +8,7 @@ function ExamScoreDetail() {
     <section>
       <header className="flex gap-12 items-center mb-6 py-4">
         <Button
-          onClick={() => navigate("/history")}
+          onClick={() => navigate(-1)}
           className="shadow-lg bg-secondary text-slate-50 inline-block px-4 py-1 rounded-lg"
         >
           Back

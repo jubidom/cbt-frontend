@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { RxCaretRight } from "react-icons/rx";
 
 function SubjectPerformance() {
+  const user = useSelector((state) => state.auth);
   return (
     <main className="flex flex-col px-2 py-3">
       <form className="py-4 flex gap-5 justify-between items-center mb-4">

@@ -1,12 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import SideBar from "./SideBar";
 import MainDisplay from "./MainDisplay";
 import MobileNav from "./MobileNav";
 
+import { currentUser } from "../../../auth/authSlice";
+
 function StudentDashboard() {
-  const [activeTab, setActiveTab] = useState("studentdashboard");
+  const [activeTab, setActiveTab] = useState("dashboard");
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      dispatch(currentUser());
+    }
+  }, [dispatch]);
 
   function handleActiveTab(tab) {
     setActiveTab(tab);

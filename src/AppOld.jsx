@@ -38,99 +38,19 @@ function App() {
       path: "/",
       element: <AuthLayout />,
       children: [
-        { index: true, element: <Navigate to="login" replace /> },
-        { path: "login", element: <Login /> },
-        { path: "signup", element: <SignupForm /> },
-      ],
-    },
-    {
-      path: "/unauthorized",
-      element: <Unauthourized />,
-    },
-
-    {
-      element: <MainLayout />,
-      errorElement: <ErrorPage />,
-
-      children: [
         {
-          path: "student",
-          element: <StudentDashboard />,
-          children: [
-            {
-              index: true,
-              element: <Navigate to="dashboard" replace />,
-            },
-            { path: "dashboard", element: <Dashboard /> },
-            { path: "profile", element: <StudentProfile /> },
-
-            {
-              path: "exams",
-              element: <ExamsGrid />,
-              children: [
-                { index: true, element: <Subjects /> },
-                { path: ":id", element: <ExamComponent /> },
-              ],
-            },
-
-            {
-              path: "history",
-              element: <ExamsHistory />,
-              children: [
-                { index: true, element: <SubjectPerformance /> },
-                { path: ":id", element: <ExamScoreDetail /> },
-              ],
-            },
-          ],
+          index: true,
+          element: <Navigate to="login" replace />,
         },
-
         {
-          path: "admin",
-          element: <AdminDashboard />,
-          children: [
-            {
-              index: true,
-              element: <Navigate to="dashboard" replace />,
-            },
-            { path: "dashboard", element: <Analytics /> },
-
-            {
-              path: "manage-exams",
-              element: <ManageExams />,
-              children: [
-                { index: true, element: <AdminExamList /> },
-                { path: "update/:id", element: <UpdateExam /> },
-              ],
-            },
-
-            { path: "results", element: <Results /> },
-            { path: "upload-exams", element: <UploadExam /> },
-            { path: "userconfig", element: <UpdateStudent /> },
-          ],
+          path: "login",
+          element: <Login />,
+        },
+        {
+          path: "signup",
+          element: <SignupForm />,
         },
       ],
-    },
-  ]);
-
-  return <RouterProvider router={router} />;
-}
-
-export default App;
-
-/* 
- const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <AuthLayout />,
-      children: [
-        { index: true, element: <Navigate to="login" replace /> },
-        { path: "login", element: <Login /> },
-        { path: "signup", element: <SignupForm /> },
-      ],
-    },
-    {
-      path: "/unauthorized",
-      element: <Unauthourized />,
     },
 
     {
@@ -138,33 +58,32 @@ export default App;
       children: [
         {
           element: <MainLayout />,
-          errorElement: <ErrorPage />,
 
+          errorElement: <ErrorPage />,
           children: [
-          
             {
               element: <ProtectedRoute specificRole={["student"]} />,
               children: [
                 {
-                  path: "student",
                   element: <StudentDashboard />,
                   children: [
                     {
                       index: true,
-                      element: <Navigate to="dashboard" replace />,
+                      element: <Navigate to="studentdashboard" replace />,
                     },
-                    { path: "dashboard", element: <Dashboard /> },
-                    { path: "profile", element: <StudentProfile /> },
-
+                    { path: "studentdashboard", element: <Dashboard /> },
+                    { path: "studentprofile", element: <StudentProfile /> },
                     {
                       path: "exams",
                       element: <ExamsGrid />,
                       children: [
                         { index: true, element: <Subjects /> },
-                        { path: ":id", element: <ExamComponent /> },
+                        {
+                          path: ":id",
+                          element: <ExamComponent />,
+                        },
                       ],
                     },
-
                     {
                       path: "history",
                       element: <ExamsHistory />,
@@ -178,32 +97,36 @@ export default App;
               ],
             },
 
-          
             {
               element: <ProtectedRoute specificRole={["admin"]} />,
               children: [
                 {
-                  path: "admin",
                   element: <AdminDashboard />,
                   children: [
                     {
                       index: true,
-                      element: <Navigate to="dashboard" replace />,
+                      element: <Navigate to="admindashboard" replace />,
                     },
-                    { path: "dashboard", element: <Analytics /> },
+                    { path: "admindashboard", element: <Analytics /> },
 
                     {
-                      path: "manage-exams",
+                      path: "manageexams",
                       element: <ManageExams />,
                       children: [
-                        { index: true, element: <AdminExamList /> },
-                        { path: "update/:id", element: <UpdateExam /> },
+                        {
+                          index: true,
+                          element: <AdminExamList />,
+                        },
+                        {
+                          path: "update/:id",
+                          element: <UpdateExam />,
+                        },
                       ],
                     },
-
+                    ,
                     { path: "results", element: <Results /> },
-                    { path: "upload-exams", element: <UploadExam /> },
-                    { path: "students", element: <UpdateStudent /> },
+                    { path: "uploadexams", element: <UploadExam /> },
+                    { path: "userconfig", element: <UpdateStudent /> },
                   ],
                 },
               ],
@@ -214,8 +137,7 @@ export default App;
     },
   ]);
 
+  return <RouterProvider router={router}></RouterProvider>;
+}
 
-
-
-
-*/
+export default App;
