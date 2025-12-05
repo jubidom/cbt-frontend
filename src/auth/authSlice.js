@@ -6,11 +6,11 @@ export const signup = createAsyncThunk(
   "authSlice/signup",
   async function (userData, { rejectWithValue }) {
     try {
-      const res = await axios.post("/api/v1/users/signup", userData);
+      const res = await axios.post("/api/v1/signup", userData);
       return res.data;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || "Signup failed, please check your biodata"
+        error.message || "Signup failed, please check your biodata"
       );
     }
   }
@@ -21,12 +21,12 @@ export const login = createAsyncThunk(
   "authSlice/login",
   async function (userData, { rejectWithValue }) {
     try {
-      const res = await axios.post("/api/v1/users/login", userData);
+      const res = await axios.post("/api/v1/login", userData);
       localStorage.setItem("token", res.data.token);
-      return res.data.user;
+      return res.data;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || "Login failed, please try again"
+        error.message || "Wrong email or password. Please try again."
       );
     }
   }
@@ -38,12 +38,12 @@ export const currentUser = createAsyncThunk(
   async function (_, { rejectWithValue }) {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get("/api/v1/users/token", {
+      const res = await axios.get("/api/v1/users/me", {
         headers: { Authorization: `Bearer ${token}` },
       });
       return res.data;
     } catch (error) {
-      return rejectWithValue(error.response?.data || "failed to fetch user");
+      return rejectWithValue(error.response?.data || "Failed to fetch user");
     }
   }
 );
@@ -60,9 +60,20 @@ const authSlice = createSlice({
     loading: false,
     error: null,
     user: null,
+    isAuthenticated: false,
+    role: null,
     token: localStorage.getItem("token") || null,
   },
-  reducers: {},
+  reducers: {
+    resetAuth: (state) => {
+      state.loading = false;
+      state.error = null;
+      state.user = null;
+      state.isAuthenticated = false;
+      state.role = null;
+      state.token = localStorage.getItem("token") || null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       //SIGNUP
@@ -84,13 +95,16 @@ const authSlice = createSlice({
       })
       .addCase(login.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload;
-        state.token = action.payload.token;
         state.error = null;
-        localStorage.setItem("token", state.token);
+        state.user = action.payload.user;
+        state.role = action.payload.user.role;
+        state.token = action.payload.token;
+        state.isAuthenticated = true;
+        localStorage.setItem("token", action.payload.token);
       })
       .addCase(login.rejected, (state, action) => {
         state.loading = false;
+        state.isAuthenticated = false;
         state.error = action.error.message || action.payload;
       })
       //CURRENTLY LOGGED IN USER
@@ -99,8 +113,10 @@ const authSlice = createSlice({
       })
       .addCase(currentUser.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload;
         state.error = null;
+        state.user = action.payload.user;
+        state.role = action.payload.user.role;
+        state.isAuthenticated = true;
       })
       .addCase(currentUser.rejected, (state, action) => {
         state.loading = false;

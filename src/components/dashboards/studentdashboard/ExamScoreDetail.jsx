@@ -8,7 +8,7 @@ function ExamScoreDetail() {
     <section>
       <header className="flex gap-12 items-center mb-6 py-4">
         <Button
-          onClick={() => navigate("/history")}
+          onClick={() => navigate(-1)}
           className="shadow-lg bg-secondary text-slate-50 inline-block px-4 py-1 rounded-lg"
         >
           Back
@@ -58,7 +58,8 @@ function ExamScoreDetail() {
             Question Summary
           </h1>
           <div className="">
-            <ul className="flex flex-col lg:gap-5 gap-4 lg:px-8 px-0">
+            <ul className="flex flex-col lg:gap-5 gap-4">
+              {/* lg:px-8 px-0 */}
               <li className="flex justify-between border py-2 px-2 rounded-lg">
                 <p className="text-lg font-semibold">What is photosynthesis?</p>
                 <div className="flex gap-3">

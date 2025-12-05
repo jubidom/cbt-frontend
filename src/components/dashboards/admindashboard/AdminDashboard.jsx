@@ -2,10 +2,11 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import MobileNav from "./MobileNav";
 import SideBar from "./SideBar";
+
 import MainDisplay from "./MainDisplay";
 
 function AdminDashboard() {
-  const [activeTab, setActiveTab] = useState("admindashboard");
+  const [activeTab, setActiveTab] = useState("dashboard");
   const [isOpen, setIsOpen] = useState(false);
 
   function handleActiveTab(tab) {

@@ -1,66 +1,75 @@
+//STUDENT SLICE
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
-// STATIC MOCK PROFILE (NO BACKEND YET)
-const MOCK_PROFILE = {
-  name: "Israel Akanni",
-  email: "israel@example.com",
-  regNumber: "SC/2021/001",
-  department: "Science",
-  gradeLevel: "400",
-  avatar: "https://i.pravatar.cc/150?img=12",
-};
+//SIGN UP
+export const studentSignup = createAsyncThunk(
+  "authSlice/studentSignup",
+  async function (data, { rejectWithValue }) {
+    try {
+      const res = await axios.post("/api/v1/signup", data);
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(
+        error.message || "Signup failed, please check your biodata"
+      );
+    }
+  }
+);
 
-// ======================================================
-// FETCH STUDENT PROFILE (Mocked)
-// ======================================================
+//LOG IN
+export const studentLogin = createAsyncThunk(
+  "authSlice/studentLogin",
+  async function (data, { rejectWithValue }) {
+    try {
+      const res = await axios.post("/api/v1/login", data);
+      localStorage.setItem("token", res.data.token);
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(
+        error.message || "Wrong email or password. Please try again."
+      );
+    }
+  }
+);
+
+//fetch data of current logged in user from backend to frontend for the student or tutor dashboard page dev
 export const fetchStudentProfile = createAsyncThunk(
   "student/fetchProfile",
-  async () => {
-    return new Promise((resolve) => {
-      setTimeout(() => resolve(MOCK_PROFILE), 500); // simulate backend delay
-    });
-  }
-);
-
-// ======================================================
-// UPDATE PROFILE (Mocked)
-// ======================================================
-export const updateStudentProfile = createAsyncThunk(
-  "student/updateProfile",
-  async (formData) => {
-    return new Promise((resolve) => {
-      const updatedProfile = {};
-
-      formData.forEach((value, key) => {
-        updatedProfile[key] = value;
+  async (_, { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem("token");
+      const res = await axios.get("/api/v1/students/me", {
+        headers: { Authorization: `Bearer ${token}` },
       });
-
-      // If avatar file exists → convert to preview
-      if (updatedProfile.avatar instanceof File) {
-        updatedProfile.avatar = URL.createObjectURL(updatedProfile.avatar);
-      }
-
-      setTimeout(() => resolve(updatedProfile), 600);
-    });
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(
+        error.response?.data || "Failed to fetch user, please log in"
+      );
+    }
   }
 );
 
-// ======================================================
-// SLICE
-// ======================================================
 const studentSlice = createSlice({
   name: "student",
   initialState: {
-    profile: null,
+    name: null,
+    matric: null,
+    exams: [], // will hold the student's exam scores and subjects
     loading: false,
     error: null,
     success: false,
+    token: localStorage.getItem("token") || null,
   },
 
   reducers: {
     resetStudentState: (state) => {
-      state.error = null;
+      state.error = "";
       state.success = false;
+    },
+    logoutStudent: (state) => {
+      state.student = null;
     },
   },
 
@@ -68,27 +77,15 @@ const studentSlice = createSlice({
     builder
       .addCase(fetchStudentProfile.pending, (state) => {
         state.loading = true;
+        state.error = false;
       })
       .addCase(fetchStudentProfile.fulfilled, (state, action) => {
         state.loading = false;
-        state.profile = action.payload;
+        state.name = action.payload.name;
+        state.matric = action.payload.matric;
+        state.exams = action.payload.exams || [];
       })
       .addCase(fetchStudentProfile.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      })
-
-      // UPDATE
-      .addCase(updateStudentProfile.pending, (state) => {
-        state.loading = true;
-        state.success = false;
-      })
-      .addCase(updateStudentProfile.fulfilled, (state, action) => {
-        state.loading = false;
-        state.success = true;
-        state.profile = { ...state.profile, ...action.payload };
-      })
-      .addCase(updateStudentProfile.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });

@@ -1,12 +1,14 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
-import {} from "react-icons/fa";
+// import {} from "react-icons/fa";
 import Timer from "./Timer";
 import Button from "../../Button";
 
 const labelStyle = `flex items-center gap-2`;
 
 function ExamComponent() {
+  const { selectedSubject } = useSelector((state) => state.subjects);
   const [startExam, setStartExam] = useState(false);
   return (
     <main className="min-h-[calc(100vh_-_76px)] flex">

@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-//other pages aside header and footer, will be displayed her
+/*  side menu, main page and other pages, will be displayed here*/
 
 function MainLayout() {
   return <div>{<Outlet />}</div>;

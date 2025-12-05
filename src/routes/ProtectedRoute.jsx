@@ -1,28 +1,31 @@
-import { Outlet, Navigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { Outlet, Navigate, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import Loader from "../components/Loader";
+import { useEffect } from "react";
+import { fetchStudentProfile } from "../components/dashboards/studentdashboard/studentSlice";
 
-function ProtectedRoute() {
+function ProtectedRoute({ specificRole, children }) {
   const location = useLocation();
-  const { user, token } = useSelector((state) => state.auth);
-  if (!user || !token) {
-    return <Navigate to="/auth/login" replace />;
-  }
-  if (
-    location.pathname === "/" ||
-    location.pathname === "/auth" ||
-    location.pathname === "/dashboard"
-  ) {
-    if (user.role && user.role === "student") {
-      // return <Navigate to="/dashboard/studentdashboard/" replace />;
-      return <Navigate to="studentdashboard" replace />;
+  const dispatch = useDispatch();
+  const { isAuthenticated, role, loading } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (role === "student") {
+      dispatch(fetchStudentProfile());
     }
-    if (user.role && user.role === "admin") {
-      // return <Navigate to="/dashboard/admindashboard/" replace />;
-      return <Navigate to="admindashboard" replace />;
-    }
+  }, [role, dispatch]);
+  if (loading) {
+    return <Loader />;
   }
-  return <Outlet />;
+  if (!isAuthenticated) {
+    return <Navigate to="/auth/login" state={{ from: location }} replace />;
+  }
+
+  if (specificRole && !specificRole.includes(role)) {
+    return <Navigate to="/unauthorized" replace />;
+  }
+
+  return children ? children : <Outlet />;
 }
 
 export default ProtectedRoute;
