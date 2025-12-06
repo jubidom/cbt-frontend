@@ -110,7 +110,7 @@ const UploadExam = () => {
 
         <button
           type="submit"
-          className="w-full mt-6 bg-blue-600 text-white p-3 rounded-md hover:bg-blue-700"
+          className="w-full mt-6 bg-secondary text-white p-3 rounded-md hover:bg-blue-700"
         >
           Upload Exam
         </button>
