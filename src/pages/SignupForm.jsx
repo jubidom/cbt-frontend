@@ -462,7 +462,7 @@ function SignupForm({ width }) {
           type="submit"
           className="inline-block px-4 py-2 min-h-11 text-center font-semibold bg-secondary  text-white rounded-xl my-6"
         >
-          {activeTab === "student" ? "Signup Student" : "Signup Admin"}
+          {activeTab === "student" ? "Student Signup" : "Admin Signup"}
         </button>
         <p className="text-sm">
           Already have an Account?
