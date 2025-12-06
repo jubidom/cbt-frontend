@@ -131,7 +131,7 @@ function Login() {
             type="submit"
             className="inline-block px-4 py-2 min-h-11 text-center font-semibold bg-secondary  text-white rounded-xl mt-6"
           >
-            {activeTab === "student" ? "Login Student" : "Login Admin"}
+            {activeTab === "student" ? "Student Login" : "Admin Login"}
           </button>
           <p className="text-sm">
             Don't Have an Account?{" "}

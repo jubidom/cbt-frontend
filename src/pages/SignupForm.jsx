@@ -1,7 +1,8 @@
 import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
 import { signup } from "../auth/authSlice";
+import { Link, useNavigate } from "react-router-dom";
+
 
 function SignupForm({ width }) {
   const [studentSignup, setStudentSignup] = useState({
